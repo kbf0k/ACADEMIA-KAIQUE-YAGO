@@ -1,0 +1,252 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+body {
+    background-color: #f4f4f4;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px;
+    color: #fff;
+    background-color: rgb(45, 43, 43);
+}
+.navbar .logo {
+    width: 250px;
+    margin-left: 50px;           
+}
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 22px;
+}
+.navbar ul li {
+    display: inline;
+}
+.navbar ul li a {
+    text-decoration: none;
+    color: #918b8b;
+    font-weight: bold;
+    font-size: 18px;
+}
+.navbar ul li a:hover {
+    color: #007BFF; /* Azul ao passar o mouse */
+}
+.navbar .button {
+    background-color: #007BFF; /* Azul */
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}
+.navbar .button:hover {
+    background-color: #0056b3;
+}
+.menu-icon {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .navbar ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background: #000;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+    .navbar .logo {
+        width: 155px;            
+    }
+    .navbar ul.show {
+        display: flex;
+    }
+    .menu-icon {
+        display: block;
+    }
+}
+
+
+
+/* CONTEÚDO */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 0;
+    text-align: center;
+}
+h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+h2 {
+    color: #007BFF;
+    font-size: 28px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+p {
+    font-size: 18px;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+
+/* SERVIÇOS */
+.services {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+.card {
+    width: 300px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.card img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+.card h3 {
+    margin-top: 15px;
+    font-size: 22px;
+    color: #000;
+}
+.card p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* RODAPÉ */
+.footer {
+    margin-top: 50px;
+    padding: 20px;
+    background: #000;
+    color: #fff;
+    font-size: 16px;
+}
+
+
+.bem-vindo {
+    width: 100%;
+    text-align: center;
+    padding: 100px 20px;
+    background: url('background.jpg') center/cover no-repeat;
+    color: white;
+    position: relative;
+}
+
+.bem-vindo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.bem-vindo h1 {
+    font-size: 48px;
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+}
+
+.bem-vindo h1 span {
+    color: #10549d;
+    
+}
+
+.bem-vindo p {
+    font-size: 20px;
+    margin-top: 10px;
+    position: relative;
+    z-index: 1;
+}
+
+
+.sobre {
+    width: 9000%;
+    max-width: 1200px;
+    margin: 50px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 90px;
+}
+.img-sobre{
+    width: 280px;
+    display: flex;
+}
+
+.sobre-text {
+    width: 50%;
+    text-align: left;
+}
+.sobre-text h2 {
+    font-size: 16px;
+    color: #555;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+.sobre-text h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #222;
+}
+.sobre-text h1 span {
+    color: #007BFF;
+    font-style: italic;
+}
+.sobre-text p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555;
+    margin: 20px 0;
+}
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.btn:hover {
+    background-color: #0655a9;
+}
+@media (max-width: 768px) {
+    .sobre {
+        flex-direction: column;
+        text-align: center;
+    }
+    .sobre-text {
+        width: 100%;
+    }
+}
