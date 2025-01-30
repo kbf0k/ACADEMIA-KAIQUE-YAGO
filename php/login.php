@@ -16,11 +16,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($result->num_rows == 1) {
         $usuario_logado = $result->fetch_assoc();
         if (password_verify($senha_digitado, $usuario_logado['senha_usuario'])) {
-            session_start();
             $_SESSION['id_sessao'] = $usuario_logado['usuario_cod'];
             $_SESSION['nome_sessao'] = $usuario_logado['usuario_nome'];
             $_SESSION['tipo_sessao'] = $usuario_logado['usuario_tipo'];
-            header('location: index.php');
+            header('location: home.php');
             exit();
         }
     }

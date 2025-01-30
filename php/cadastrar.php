@@ -1,6 +1,7 @@
 <?php
-include 'config.php';
 session_start();
+include 'config.php';
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $nome_cadastro = $_POST['nome_cadastrar'];

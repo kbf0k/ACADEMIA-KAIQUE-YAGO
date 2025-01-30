@@ -1,6 +1,6 @@
 <?php
 session_start();
-include('config.php'); 
+include('config.php');
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -29,7 +29,10 @@ include('config.php');
                     <li class="nav-item"><a class="nav-link" href="aulas.php">Aulas</a></li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
-                    <?php if (isset($_SESSION['usuario_nome'])) { ?>
+                    <?php if (isset($_SESSION['nome_sessao'])) { ?>
+                        <li class="nav-item">
+                            <span class="nav-link text-white">Olá, <?= htmlspecialchars($_SESSION['nome_sessao']) ?>!</span>
+                        </li>
                         <li class="nav-item"><a class="nav-link" href="logout.php">Sair</a></li>
                     <?php } else { ?>
                         <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
