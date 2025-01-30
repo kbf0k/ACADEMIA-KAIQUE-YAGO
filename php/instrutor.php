@@ -1,6 +1,5 @@
 <?php
 include('config.php');
-include('header.php');
 
 // Consulta todos os instrutores cadastrados
 $sql = "SELECT * FROM instrutor";
@@ -12,19 +11,28 @@ $result = $conexao->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/instrutor.css">
     <title>Gerenciamento de Instrutores</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
+<nav class="navbar">
+    <a href="home.php"><img src="../img/logo3.png" alt="" class="logo"></a>
+    <ul>
+        <li><a href="alunos.php">Alunos</a></li>
+        <li><a href="instrutor.php">Instrutores</a></li>
+        <li><a href="aula.php">Aulas</a></li>
+    </ul>
+    <a href="#" class="button">Buscar Academia</a>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+</nav>
 <body>
 
 <div class="container mt-4">
     <h2 class="text-center">Gerenciamento de Instrutores</h2>
 
-
     <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#modalAdicionarInstrutor">Adicionar Instrutor</button>
 
-    
     <table class="table table-striped">
         <thead>
             <tr>
@@ -54,12 +62,13 @@ $result = $conexao->query($sql);
 </div>
 
 <!-- Modal Adicionar Instrutor -->
+<!-- Modal Adicionar Instrutor -->
 <div class="modal fade" id="modalAdicionarInstrutor" tabindex="-1" aria-labelledby="modalAdicionarInstrutorLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalAdicionarInstrutorLabel">Adicionar Instrutor</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
             </div>
             <div class="modal-body">
                 <form action="adicionar_instrutor.php" method="POST">
@@ -70,6 +79,14 @@ $result = $conexao->query($sql);
                     <div class="mb-3">
                         <label for="instrutorEspecialidade" class="form-label">Especialidade</label>
                         <input type="text" class="form-control" name="instrutorEspecialidade" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="instrutorEmail" class="form-label">E-mail</label>
+                        <input type="email" class="form-control" name="instrutorEmail" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="instrutorSenha" class="form-label">Senha</label>
+                        <input type="password" class="form-control" name="instrutorSenha" required>
                     </div>
                     <button type="submit" class="btn btn-success">Adicionar</button>
                 </form>
@@ -103,7 +120,23 @@ $result = $conexao->query($sql);
         </div>
     </div>
 </div>
-
+<div class="modal fade" id="modalExcluirInstrutor" tabindex="-1" aria-labelledby="modalExcluirInstrutorLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalExcluirInstrutorLabel">Confirmar Exclusão</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body">
+                <p>Tem certeza que deseja excluir o instrutor <strong id="instrutorNomeExcluir"></strong>?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <a href="#" id="btnConfirmarExclusao" class="btn btn-danger">Excluir</a>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     const editarButtons = document.querySelectorAll(".btn-editar");
@@ -230,12 +263,6 @@ h2 {
     justify-content: flex-end;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    .table th, .table td {
-        font-size: 14px;
-        padding: 10px;
-    }
-}
+
 
 </style>

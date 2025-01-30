@@ -8,7 +8,7 @@ if (isset($_POST['instrutorId'])) {
     $especialidade = $conexao->real_escape_string($_POST['instrutorEspecialidade']);
 
     // Atualiza os dados no banco de dados
-    $sql = "UPDATE instrutores SET instrutor_nome = '$nome', instrutor_especialidade = '$especialidade' WHERE instrutor_cod = $instrutorId";
+    $sql = "UPDATE instrutor SET instrutor_nome = '$nome', instrutor_especialidade = '$especialidade' WHERE instrutor_cod = $instrutorId";
     
     if ($conexao->query($sql) === TRUE) {
         // Redireciona para a página instrutor.php após a edição
