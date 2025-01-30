@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/login-cadastro.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
     <title>Login</title>
 </head>
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <label for="senha">Senha</label>
                 <input type="password" id="senha_login" name="senha_login" required placeholder="Digite sua Senha">
 
-                <p>Nao tem uma conta?<a id="cadastrar-login" href="cadastrar.php">Cadastra-se</a></p>
+                <p>Nao tem uma conta?<a id="cadastrar-login" href="cadastrar.php">Cadastrar-se</a></p>
 
                 <button id="entrar-login" type="submit">Entrar</button>
             </form>
