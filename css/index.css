@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(../img/background-login.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#login {
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    backdrop-filter: blur(30px);
+    border-radius: 20px;
+    width: 430px;
+    height: 600px;
+    box-shadow: 0 0 15px #1190cb;
+    padding: 50px;
+}
+
+#login #logo {
+    max-width: 200px;
+    border-radius: 20px;
+    transition: 0.2s ease-in-out;
+    margin: 0 auto;
+    filter: drop-shadow(5px 5px 3.5px black);
+}
+
+#login #logo:hover {
+    filter: drop-shadow(5px 5px 3.5px #1190cb);
+    transform: scale(1.05);
+}
+
+#login h1 {
+    margin-top: 20px;
+    color: white;
+}
+
+#login label {
+    color: white;
+    margin-top: 20px;
+}
+
+#login input {
+    padding: 8px;
+    border-radius: 15px;
+    border: 1px solid #1190cb;
+    outline: none;
+}
+
+#login p {
+    margin-top: 30px;
+    color: white;
+    font-size: 15px;
+}
+
+#login #cadastrar-login {
+    margin-left: 55px;
+    border-radius: 20px;
+    border: 1px solid #1190cb;
+    padding: 0 8px;
+    text-decoration: none;
+    color: black;
+    background-color: white;
+}
+
+#login #entrar-login {
+    border-radius: 20px;
+    padding: 10px;
+    border: 1px solid #1190cb;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+/* CADASTRAR */
+/* CADASTRAR */
+/* CADASTRAR */
+/* CADASTRAR */
+/* CADASTRAR */
+/* CADASTRAR */
+/* CADASTRAR */
+/* CADASTRAR */
+/* CADASTRAR */
+/* CADASTRAR */
+/* CADASTRAR */
+
+#main-cadastrar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 160vh;
+    background-image: url(../img/background-login.jpg) fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#cadastrar {
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    backdrop-filter: blur(30px);
+    border-radius: 20px;
+    width: 430px;
+    height: 1000px;
+    box-shadow: 0 0 15px #1190cb;
+    padding: 50px;
+}
+
+
+#cadastrar #cadastrar-voltar{
+    border-radius: 20px;
+    border: 1px solid #1190cb;
+    cursor: pointer;
+    background-color: white;
+    text-decoration: none;
+    color: black;
+    padding: 2px 10px;
+}
+
+#cadastrar #logo {
+    max-width: 200px;
+    border-radius: 20px;
+    transition: 0.2s ease-in-out;
+    margin: 0 auto;
+    filter: drop-shadow(5px 5px 3.5px black);
+}
+
+#cadastrar #logo:hover {
+    filter: drop-shadow(5px 5px 3.5px #1190cb);
+    transform: scale(1.05);
+}
+
+#cadastrar h1 {
+    margin-top: 20px;
+    color: white;
+}
+
+#cadastrar label {
+    color: white;
+    margin-top: 20px;
+}
+
+#cadastrar input {
+    padding: 8px;
+    border-radius: 15px;
+    border: 1px solid #1190cb;
+    outline: none;
+}
+
+#cadastrar p {
+    margin-top: 30px;
+    color: white;
+    font-size: 15px;
+}
+
+#cadastrar #cadastrar-login {
+    margin-left: 55px;
+    border-radius: 20px;
+    border: 1px solid #1190cb;
+    padding: 0 8px;
+    text-decoration: none;
+    color: black;
+    background-color: white;
+}
+
+#cadastrar #entrar-cadastrar {
+    border-radius: 20px;
+    padding: 10px;
+    border: 1px solid #1190cb;
+    cursor: pointer;
+    margin-top: 30px;
+}
