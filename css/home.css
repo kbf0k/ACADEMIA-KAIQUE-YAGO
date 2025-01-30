@@ -80,10 +80,6 @@ body {
 
 /* CONTEÚDO */
 .container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 50px 0;
     text-align: center;
 }
 h1 {
@@ -150,8 +146,8 @@ p {
 .bem-vindo {
     width: 100%;
     text-align: center;
-    padding: 100px 20px;
-    background: url('background.jpg') center/cover no-repeat;
+    padding: 120px;
+    background: url('../img/background-login.jpg') center/cover no-repeat;
     color: white;
     position: relative;
 }
@@ -171,15 +167,17 @@ p {
     font-weight: bold;
     position: relative;
     z-index: 1;
+    text-shadow: 0 0 4px black;
 }
 
 .bem-vindo h1 span {
     color: #10549d;
-    
+    text-shadow: 0 0 4px black;
+    font-size: 50px;
 }
 
 .bem-vindo p {
-    font-size: 20px;
+    font-size: 22px;
     margin-top: 10px;
     position: relative;
     z-index: 1;
@@ -205,13 +203,13 @@ p {
     text-align: left;
 }
 .sobre-text h2 {
-    font-size: 16px;
+    font-size: 20px;
     color: #555;
     text-transform: uppercase;
     margin-bottom: 10px;
 }
 .sobre-text h1 {
-    font-size: 36px;
+    font-size: 40px;
     font-weight: bold;
     color: #222;
 }
@@ -220,17 +218,17 @@ p {
     font-style: italic;
 }
 .sobre-text p {
-    font-size: 18px;
-    line-height: 1.6;
+    font-size: 21px;
+    line-height: 1.5;
     color: #555;
     margin: 20px 0;
 }
 .btn {
     display: inline-block;
-    padding: 12px 20px;
+    padding: 18px;
     background-color: #007BFF;
     color: white;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
     border: none;
     border-radius: 5px;

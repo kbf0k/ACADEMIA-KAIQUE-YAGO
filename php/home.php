@@ -10,11 +10,11 @@
     </style>
 </head>
 <nav class="navbar">
-    <a href="index.php"><img src="../img/logo3.png" alt="" class="logo"></a>
+    <a href="home.php"><img src="../img/logo3.png" alt="" class="logo"></a>
     <ul>
-        <li><a href="#">Alunos</a></li>
-        <li><a href="#">Instrutores</a></li>
-        <li><a href="#">Aulas</a></li>
+        <li><a href="alunos.php">Alunos</a></li>
+        <li><a href="instrutor.php">Instrutores</a></li>
+        <li><a href="aula.php">Aulas</a></li>
     </ul>
     <a href="#" class="button">Buscar Academia</a>
     <div class="menu-icon" onclick="toggleMenu()">☰</div>
