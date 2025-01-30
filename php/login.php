@@ -7,21 +7,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email_digitado = $_POST['email_login'];
     $senha_digitado = $_POST['senha_login'];
 
-    $sql = "SELECT * FROM usuarios WHERE email_usuario = ? AND senha_usuario = ?";
+    $sql = "SELECT * FROM usuarios WHERE email_usuario = ?";
     $stmt = $conexao->prepare($sql);
-    $stmt->bind_param("ss", $email_digitado, $senha_digitado);
+    $stmt->bind_param("s", $email_digitado);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows == 1) {
         $usuario_logado = $result->fetch_assoc();
-        $_SESSION['nome_sessao'] = $usuario_logado['usuario_nome'];
-        $_SESSION['tipo_sessao'] = $usuario_logado['usuario_tipo'];
-        $_SESSION['id_sessao'] = $usuario_logado['usuario_cod'];
-        header('location: inicio.php');
-        exit();
-    } else {
-        // Aqui você pode mostrar um alerta de erro, por exemplo, se o login falhar
+        if (password_verify($senha_digitado, $usuario_logado['senha_usuario'])) {
+            session_start();
+            $_SESSION['id_sessao'] = $usuario_logado['usuario_cod'];
+            $_SESSION['nome_sessao'] = $usuario_logado['usuario_nome'];
+            $_SESSION['tipo_sessao'] = $usuario_logado['usuario_tipo'];
+            header('location: index.php');
+            exit();
+        }
     }
 }
 ?>

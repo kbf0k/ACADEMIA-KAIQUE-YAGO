@@ -1,6 +1,6 @@
 <?php
 include 'config.php';
-
+session_start();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $nome_cadastro = $_POST['nome_cadastrar'];
@@ -12,14 +12,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $senha_cadastro = $_POST['senha_cadastrar'];
     $tipo_cadastro = $_POST['tipo_cadastrar'];
 
+    $senha_criptografada = password_hash($senha_cadastro, PASSWORD_DEFAULT);
+
     $sql1 = "INSERT INTO usuarios(email_usuario, senha_usuario, tipo_usuario) VALUES (?, ?, ?)";
     $stmt1 = $conexao->prepare($sql1);
-    $stmt1->bind_param('sss', $email_cadastro, $senha_cadastro, $tipo_cadastro);
+    $stmt1->bind_param('sss', $email_cadastro, $senha_criptografada, $tipo_cadastro);
     $stmt1->execute();
 
     $sql2 = "INSERT INTO aluno(aluno_cod, aluno_nome, aluno_email, aluno_cpf, aluno_endereco, aluno_telefone, aluno_nasc, aluno_senha) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt2 = $conexao->prepare($sql2);
-    $stmt2->bind_param('issssiss', $id_usuario, $nome_cadastro, $email_cadastro, $cpf_cadastro, $endereco_cadastro, $telefone_cadastro, $nascimento_cadastro, $senha_cadastro);
+    $stmt2->bind_param('issssiss', $id_usuario, $nome_cadastro, $email_cadastro, $cpf_cadastro, $endereco_cadastro, $telefone_cadastro, $nascimento_cadastro, $senha_criptografada);
     $stmt2->execute();
 
     $cadastro_sucesso = true;
