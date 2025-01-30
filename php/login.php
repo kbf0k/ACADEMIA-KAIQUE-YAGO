@@ -7,14 +7,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email_digitado = $_POST['email_login'];
     $senha_digitado = $_POST['senha_login'];
 
-    $sql = "SELECT * FROM usuarios WHERE usuario_email = ? AND usuario_senha = ?";
+    $sql = "SELECT * FROM usuarios WHERE email_usuario = ? AND senha_usuario = ?";
     $stmt = $conexao->prepare($sql);
     $stmt->bind_param("ss", $email_digitado, $senha_digitado);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows == 1) {
-        $usuario_logado = $result2->fetch_assoc();
+        $usuario_logado = $result->fetch_assoc();
         $_SESSION['nome_sessao'] = $usuario_logado['usuario_nome'];
         $_SESSION['tipo_sessao'] = $usuario_logado['usuario_tipo'];
         $_SESSION['id_sessao'] = $usuario_logado['usuario_cod'];
