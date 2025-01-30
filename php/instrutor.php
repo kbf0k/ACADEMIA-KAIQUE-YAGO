@@ -3,7 +3,7 @@ include('config.php');
 include('header.php');
 
 // Consulta todos os instrutores cadastrados
-$sql = "SELECT * FROM instrutores";
+$sql = "SELECT * FROM instrutor";
 $result = $conexao->query($sql);
 ?>
 
@@ -21,10 +21,10 @@ $result = $conexao->query($sql);
 <div class="container mt-4">
     <h2 class="text-center">Gerenciamento de Instrutores</h2>
 
-    <!-- Botão para abrir o modal de adicionar instrutor -->
+
     <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#modalAdicionarInstrutor">Adicionar Instrutor</button>
 
-    <!-- Lista de Instrutores -->
+    
     <table class="table table-striped">
         <thead>
             <tr>
@@ -104,7 +104,6 @@ $result = $conexao->query($sql);
     </div>
 </div>
 
-<!-- Script para preencher os campos do modal de edição -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     const editarButtons = document.querySelectorAll(".btn-editar");
