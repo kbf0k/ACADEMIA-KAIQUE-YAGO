@@ -53,6 +53,15 @@ body {
     cursor: pointer;
 }
 
+
+#logout{
+    max-width: 40px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+
+
 @media (max-width: 768px) {
     .navbar ul {
         display: none;
@@ -145,8 +154,9 @@ p {
 
 .bem-vindo {
     width: 100%;
+    height: 460px;
     text-align: center;
-    padding: 120px;
+    padding: 150px;
     background: url('../img/background-login.jpg') center/cover no-repeat;
     color: white;
     position: relative;

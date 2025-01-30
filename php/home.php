@@ -1,3 +1,8 @@
+<?php
+session_start();
+include('config.php');
+
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -16,7 +21,17 @@
         <li><a href="instrutor.php">Instrutores</a></li>
         <li><a href="aula.php">Aulas</a></li>
     </ul>
-    <a href="#" class="button">Buscar Academia</a>
+
+    <?php 
+    if (isset($_SESSION['nome_sessao'])) {
+        ?>
+        <a href="#"class="button">Olá, <?= htmlspecialchars($_SESSION['nome_sessao'])?></a>
+        <img id="logout" src="../img/logout.png" alt="">
+        <?php
+    } else {
+        echo "Sessão não iniciada";
+    }
+    ?>
     <div class="menu-icon" onclick="toggleMenu()">☰</div>
 </nav>
 <body>
@@ -43,8 +58,8 @@
         <img class="img-sobre" src="../img/logo.png" alt="Academia">
     </div>
     
-    <h2>Explore Nossos Serviços</h2>
     <div class="services">
+        <h2>Explore Nossos Serviços</h2>
         <div class="card">
             <img src="musculacao.jpg" alt="Musculação">
             <h3>Musculação</h3>
