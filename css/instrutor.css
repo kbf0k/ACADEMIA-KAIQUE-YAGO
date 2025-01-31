@@ -1,55 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins';
+    scroll-behavior: smooth;
 }
-body {
-    background-color: #f4f4f4;
-}
+
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 32px;
+    background: linear-gradient(180deg,black,black,black,black,rgba(0, 0, 0, 0));
+    position: absolute;
+    z-index: 1;
     color: #fff;
-    background-color: rgb(45, 43, 43);
+    padding: 15px;
+    width: 100%;
 }
+
 .navbar .logo {
-    width: 250px;
-    margin-left: 50px;           
+    max-width: 250px;
+    margin-left: 30px;
 }
+
 .navbar ul {
-    list-style: none;
     display: flex;
-    gap: 22px;
 }
+
 .navbar ul li {
-    display: inline;
+    margin-right: 100px;
+    list-style: none;
 }
+
 .navbar ul li a {
+    color: white;
     text-decoration: none;
-    color: #918b8b;
-    font-weight: bold;
-    font-size: 18px;
+    transition: 0.2s ease-in-out;
 }
+
 .navbar ul li a:hover {
-    color: #007BFF; /* Azul ao passar o mouse */
+    color: #007BFF;
 }
-.navbar .button {
-    background-color: #007BFF; /* Azul */
+
+.navbar .usuario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.navbar #nome_usuario {
+    background-color: #007BFF;
     color: #fff;
     padding: 8px 15px;
     border-radius: 20px;
     text-decoration: none;
     font-weight: bold;
+    margin-right: 20px;
 }
-.navbar .button:hover {
+
+.navbar #nome_usuario:hover {
+    background-color: #007BFF;
+}
+
+.navbar #entrar {
+    color: white;
+    text-decoration: none;
+    padding: 2px 20px;
     background-color: #0056b3;
+    border-radius: 20px;
+    margin-right: 60px;
 }
+
 .menu-icon {
     display: none;
     font-size: 24px;
+    cursor: pointer;
+}
+
+#logout {
+    max-width: 40px;
     cursor: pointer;
 }
 

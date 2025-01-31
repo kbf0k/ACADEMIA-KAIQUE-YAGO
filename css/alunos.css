@@ -1,3 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+    scroll-behavior: smooth;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    background: linear-gradient(180deg,black,black,black,black,rgba(0, 0, 0, 0));
+    padding: 15px;
+}
+
+.navbar .logo {
+    max-width: 250px;
+    margin-left: 30px;
+}
+
+.navbar ul {
+    display: flex;
+}
+
+.navbar ul li {
+    margin-right: 100px;
+    list-style: none;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    transition: 0.2s ease-in-out;
+}
+
+.navbar ul li a:hover {
+    color: #007BFF;
+}
+
+.navbar .usuario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.navbar #nome_usuario {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.navbar #nome_usuario:hover {
+    background-color: #007BFF;
+}
+
+.navbar #entrar {
+    color: white;
+    text-decoration: none;
+    padding: 2px 20px;
+    background-color: #0056b3;
+    border-radius: 20px;
+    margin-right: 60px;
+}
+
+.menu-icon {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+#logout {
+    max-width: 40px;
+    cursor: pointer;
+}
+
 .section-title {
     color: #007bff;
     margin-bottom: 20px;
@@ -115,15 +199,136 @@
     font-size: 16px;
 }
 
-img {
+/* img { 
 width: 100px;
 height: 100px;
 margin-right: 10px;
 border-radius: 50%;
 object-fit: cover;
 background-color: white;
-}
+} */
+
+/* NAO SEI OQ É IMG */
 
 .nav-item {
 margin-right: 40px;
+}
+
+/* Estilo geral */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+/* Cabeçalho */
+h2 {
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+/* Tabela de Alunos */
+.table {
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.table th,
+.table td {
+    text-align: center;
+    padding: 15px;
+}
+
+.table-striped tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+/* Botões */
+.btn {
+    transition: background-color 0.3s ease;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+/* Modal */
+.modal-content {
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    background-color: #007bff;
+    color: white;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.modal-header .btn-close {
+    background-color: #fff;
+    border: none;
+    color: #007bff;
+}
+
+.modal-header .btn-close:hover {
+    color: #0056b3;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-body .form-label {
+    font-weight: bold;
+}
+
+.modal-body .form-control {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+
+    .table th,
+    .table td {
+        font-size: 14px;
+        padding: 10px;
+    }
 }

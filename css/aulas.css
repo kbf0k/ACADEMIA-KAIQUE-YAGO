@@ -101,7 +101,7 @@ main {
     justify-content: center;
     align-items: baseline;
     flex-direction: column;
-    height: 100vh;
+    height: 150vh;
     width: 100%;
     text-align: center;
     background: url('../img/background-login.jpg') center/cover no-repeat;
@@ -156,127 +156,6 @@ main {
     border-radius: 20px;
     position: sticky;
     text-decoration: none;
-}
-
-#sobre {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(360deg, white, #00356d3d);
-    width: 100%;
-    height: 90vh;
-}
-
-#sobre_text {
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-    flex-direction: column;
-    width: 800px;
-    height: 450px;
-    margin-right: 100px;
-}
-
-#sobre_text h1 {
-    text-align: end;
-    font-size: 40px;
-    font-weight: bold;
-    color: #222;
-}
-
-#sobre_text h1 span {
-    color: #007BFF;
-    font-style: italic;
-}
-
-#sobre_text h2 {
-    font-size: 20px;
-    color: #555;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-}
-
-#sobre_text p {
-    font-size: 21px;
-    line-height: 1.5;
-    color: #555;
-    margin: 20px 0;
-}
-
-#sobre_text .saiba_mais {
-    padding: 10px 20px;
-    margin-top: 30px;
-    background-color: #0056b3;
-    color: white;
-    border-radius: 20px;
-    position: sticky;
-    text-decoration: none;
-}
-
-/* SERVIÇOS */
-#servicos {
-    background: linear-gradient(180deg, white, #00356d);
-    height: 80vh;
-    width: 100%;
-}
-
-#servicos h1 {
-    text-align: center;
-    font-size: 40px;
-    margin-bottom: 50px;
-}
-
-#servicos h1 span {
-    color: #007BFF;
-    font-style: italic;
-    transition: 0.5s ease-in-out;
-}
-
-#servicos h1 span:hover {
-    text-shadow: 2px 2px 1px #00356d88;
-}
-
-#servicos_container {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-.card {
-    width: 300px;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
-    text-align: center;
-    transition: 0.1s ease-in-out;
-}
-
-.card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 10px 15px #00356d88;
-}
-
-.card img {
-    max-width: 120px;
-    object-fit: cover;
-    border-radius: 10px;
-    transition: 0.1s ease-in-out;
-}
-
-.card:hover img {
-    filter: drop-shadow(5px 5px 0px #00356d);
-}
-
-.card h3 {
-    margin-top: 15px;
-    font-size: 22px;
-    color: #000;
-}
-
-.card p {
-    font-size: 16px;
-    color: #555;
 }
 
 /* RODAPÉ */

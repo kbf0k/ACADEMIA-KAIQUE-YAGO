@@ -18,32 +18,29 @@ $result = $conexao->query($sql);
     <title>Alunos da Hyperforce</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
     <link rel="stylesheet" href="../css/alunos.css">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <img src="../img/logo2.png" alt="">
-            <a class="navbar-brand" href="index.php">Hyperforce</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="alunos.php">Alunos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="instrutor.php">Instrutores</a></li>
-                    <li class="nav-item"><a class="nav-link" href="aulas.php">Aulas</a></li>
-                </ul>
-                <ul class="navbar-nav ms-auto">
-                    <?php if (isset($_SESSION['usuario_nome'])) { ?>
-                        <li class="nav-item"><a class="nav-link" href="logout.php">Sair</a></li>
-                    <?php } else { ?>
-                        <li class="nav-item"><a class="nav-link" href="login.php">Login</a></li>
-                    <?php } ?>
-                </ul>
+    <nav class="navbar">
+        <a href="home.php"><img src="../img/logo3.png" alt="" class="logo"></a>
+        <ul>
+            <li><a href="home.php">Início</a></li>
+            <li><a href="alunos.php">Alunos</a></li>
+            <li><a href="instrutor.php">Instrutores</a></li>
+            <li><a href="aulas.php">Aulas</a></li>
+        </ul>
+
+        <?php if (isset($_SESSION['nome_sessao'])): ?>
+            <div class="usuario">
+                <a href="#" id="nome_usuario">Olá, <?= htmlspecialchars($_SESSION['nome_sessao']) ?></a>
+                <img id="logout" src="../img/logout.png" alt="">
             </div>
-        </div>
+        <?php else: ?>
+            <a href="login.php" id="entrar">Entrar</a>
+            <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <?php endif; ?>
     </nav>
 
     <div class="container mt-4">
@@ -155,124 +152,3 @@ $result = $conexao->query($sql);
 </body>
 
 </html>
-
-<style>
-    /* Estilo geral */
-    body {
-        font-family: 'Arial', sans-serif;
-        background-color: #f4f4f9;
-        color: #333;
-    }
-
-    /* Cabeçalho */
-    h2 {
-        color: #007bff;
-        margin-bottom: 20px;
-    }
-
-    /* Tabela de Alunos */
-    .table {
-        border-radius: 8px;
-        border: 1px solid #ddd;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .table th,
-    .table td {
-        text-align: center;
-        padding: 15px;
-    }
-
-    .table-striped tbody tr:nth-child(odd) {
-        background-color: #f9f9f9;
-    }
-
-    /* Botões */
-    .btn {
-        transition: background-color 0.3s ease;
-    }
-
-    .btn-success {
-        background-color: #28a745;
-        border-color: #28a745;
-    }
-
-    .btn-success:hover {
-        background-color: #218838;
-        border-color: #1e7e34;
-    }
-
-    .btn-primary {
-        background-color: #007bff;
-        border-color: #007bff;
-    }
-
-    .btn-primary:hover {
-        background-color: #0056b3;
-        border-color: #004085;
-    }
-
-    .btn-danger {
-        background-color: #dc3545;
-        border-color: #dc3545;
-    }
-
-    .btn-danger:hover {
-        background-color: #c82333;
-        border-color: #bd2130;
-    }
-
-    /* Modal */
-    .modal-content {
-        border-radius: 8px;
-        border: 1px solid #ddd;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .modal-header {
-        background-color: #007bff;
-        color: white;
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
-    }
-
-    .modal-header .btn-close {
-        background-color: #fff;
-        border: none;
-        color: #007bff;
-    }
-
-    .modal-header .btn-close:hover {
-        color: #0056b3;
-    }
-
-    .modal-body {
-        padding: 20px;
-    }
-
-    .modal-body .form-label {
-        font-weight: bold;
-    }
-
-    .modal-body .form-control {
-        border-radius: 8px;
-        border: 1px solid #ccc;
-        padding: 10px;
-        margin-bottom: 15px;
-    }
-
-    .modal-footer {
-        display: flex;
-        justify-content: flex-end;
-    }
-
-    /* Responsividade */
-    @media (max-width: 768px) {
-
-        .table th,
-        .table td {
-            font-size: 14px;
-            padding: 10px;
-        }
-    }
-</style>

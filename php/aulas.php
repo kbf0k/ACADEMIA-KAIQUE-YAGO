@@ -9,7 +9,7 @@ include('config.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Início</title>
+    <title>Aulas</title>
     <link rel="stylesheet" href="../css/home.css">
     <script src="../js/home.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
@@ -43,45 +43,12 @@ include('config.php');
         <section id="home">
             <div id="home_texto">
                 <h1>BEM-VINDO À</h1>
-                <span>HYPERFORCE</span>
-                <p>Transforme seu corpo e mente conosco.</p>
+                <span>AULAS</span>
+                <p>YAGO É PIKA.</p>
                 <p>Oferecemos uma experiência única em bem-estar e fitness</p>
                 <a href="#sobre" class="saiba_mais">Saiba mais</a>
             </div>
         </section>
-
-        <section id="sobre">
-            <div id="sobre_text">
-                <h2>Sobre Nós</h2>
-                <h1>SOMOS A <span>HYPERFORCE</span></h1>
-                <p>A Hyperforce nasceu para revolucionar o mercado fitness, oferecendo inovação e acessibilidade.
-                    Com uma estrutura moderna e instrutores qualificados, proporcionamos a melhor experiência em treino e bem-estar.</p>
-                <a href="#servicos" class="saiba_mais">Saiba Mais</a>
-            </div>
-            <img class="img-sobre" src="../img/logo.png" alt="Academia">
-        </section>
-
-        <section id="servicos">
-            <h1>EXPLORE NOSSOS <span>SERVIÇOS</span></h1>
-            <div id="servicos_container">
-                <div class="card">
-                    <img src="../img/icone_musculaçao.png" alt="Musculação">
-                    <h3>Musculação</h3>
-                    <p>Equipamentos modernos e acompanhamento profissional para atingir seus objetivos.</p>
-                </div>
-                <div class="card">
-                    <img src="../img/icone_crossfit.png" alt="Crossfit">
-                    <h3>Crossfit</h3>
-                    <p>Treinamento de alta intensidade para quem busca força e resistência.</p>
-                </div>
-                <div class="card">
-                    <img src="../img/icone_yoga.png" alt="Yoga">
-                    <h3>Yoga</h3>
-                    <p>Conecte mente e corpo com nossas aulas de Yoga para todos os níveis.</p>
-                </div>
-            </div>
-        </section>
-
     </main>
 
     <div class="footer">
