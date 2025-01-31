@@ -33,7 +33,7 @@ main {
     border-radius: 20px;
     width: 430px;
     height: 600px;
-    box-shadow: 0 0 15px #1190cb;
+    box-shadow: 0 0 15px #00356d;
     padding: 50px;
 }
 
@@ -62,7 +62,7 @@ main {
 #login input {
     padding: 8px;
     border-radius: 15px;
-    border: 1px solid #1190cb;
+    border: 1px solid #00356d;
     outline: none;
 }
 
@@ -75,20 +75,33 @@ main {
 #login #cadastrar-login {
     margin-left: 50px;
     border-radius: 20px;
-    border: 1px solid #1190cb;
+    border: 1px solid #00356d;
     padding: 0 8px;
     text-decoration: none;
     color: black;
     background-color: white;
+    transition: 0.2s ease-in-out;
 }
+
+#login #cadastrar-login:hover{
+    background-color: #0056b3;
+    color: white;
+} 
+
 
 #login #entrar-login {
     border-radius: 20px;
     padding: 10px;
-    border: 1px solid #1190cb;
+    border: 1px solid #00356d;
     cursor: pointer;
     margin-top: 30px;
+    transition: 0.2s ease-in-out;
 }
+
+#login #entrar-login:hover{
+    background-color: #0056b3;
+    color: white;
+} 
 
 /* CADASTRAR */
 /* CADASTRAR */
@@ -106,7 +119,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 160vh;
+    height: 100vh;
     background-image: url(../img/background-login.jpg) fixed;
     background-size: cover;
     background-position: center;
@@ -119,16 +132,16 @@ main {
     background-color: transparent;
     backdrop-filter: blur(30px);
     border-radius: 20px;
-    width: 430px;
-    height: 1000px;
-    box-shadow: 0 0 15px #1190cb;
+    width: 700px;
+    height: 620px;
+    box-shadow: 0 0 15px #00356d;
     padding: 50px;
 }
 
 
 #cadastrar #cadastrar-voltar{
     border-radius: 20px;
-    border: 1px solid #1190cb;
+    border: 1px solid #00356d;
     cursor: pointer;
     background-color: white;
     text-decoration: none;
@@ -137,7 +150,7 @@ main {
 }
 
 #cadastrar #logo {
-    max-width: 200px;
+    max-width: 170px;
     border-radius: 20px;
     transition: 0.2s ease-in-out;
     margin: 0 auto;
@@ -153,15 +166,26 @@ main {
     color: white;
 }
 
-#cadastrar label {
-    color: white;
+.input-group {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between; 
+}
+
+.input-group div {
+    flex: 1;
     margin-top: 20px;
+    color: white;
+}
+
+.input-group input {
+    width: 100%;
 }
 
 #cadastrar input {
     padding: 8px;
     border-radius: 15px;
-    border: 1px solid #1190cb;
+    border: 1px solid #00356d;
     outline: none;
 }
 
@@ -174,7 +198,7 @@ main {
 #cadastrar #cadastrar-login {
     margin-left: 55px;
     border-radius: 20px;
-    border: 1px solid #1190cb;
+    border: 1px solid #00356d;
     padding: 0 8px;
     text-decoration: none;
     color: black;
@@ -184,7 +208,13 @@ main {
 #cadastrar #entrar-cadastrar {
     border-radius: 20px;
     padding: 10px;
-    border: 1px solid #1190cb;
+    border: 1px solid #00356d;
     cursor: pointer;
     margin-top: 30px;
+    transition: 0.2s ease-in-out;
 }
+
+#cadastrar #entrar-cadastrar:hover{
+    background-color: #0056b3;
+    color: white;
+} 

@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $sql1 = "INSERT INTO usuarios(nome_usuario, email_usuario, senha_usuario, tipo_usuario) VALUES (?, ?, ?, ?)";
     $stmt1 = $conexao->prepare($sql1);
-    $stmt1->bind_param('ssss',$nome_cadastro, $email_cadastro, $senha_criptografada, $tipo_cadastro);
+    $stmt1->bind_param('ssss', $nome_cadastro, $email_cadastro, $senha_criptografada, $tipo_cadastro);
     $stmt1->execute();
 
     $sql2 = "INSERT INTO aluno(aluno_nome, aluno_email, aluno_cpf, aluno_endereco, aluno_telefone, aluno_nasc, aluno_senha) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -46,28 +46,43 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <form action="" method="post" id="cadastrar">
                 <span><a id="cadastrar-voltar" href="login.php">Voltar</a></span>
                 <img src="../img/logo.png" alt="" id="logo">
-                <h1>Cadastra-se</h1>
+                <h1>Cadastrar-se</h1>
 
-                <label for="nome_cadastrar">Nome</label>
-                <input type="text" id="nome_cadastrar" name="nome_cadastrar" required placeholder="Digite seu Nome">
+                <div class="input-group">
+                    <div>
+                        <label for="nome_cadastrar">Nome</label>
+                        <input type="text" id="nome_cadastrar" name="nome_cadastrar" required placeholder="Digite seu Nome">
+                    </div>
 
-                <label for="email_cadastrar">Email</label>
-                <input type="email" id="email_cadastrar" name="email_cadastrar" required placeholder="Digite seu email">
+                    <div>
+                        <label for="email_cadastrar">Email</label>
+                        <input type="email" id="email_cadastrar" name="email_cadastrar" required placeholder="Digite seu email">
+                    </div>
+                </div>
 
-                <label for="cpf_cadastrar">CPF</label>
-                <input type="number" id="cpf_cadastrar" name="cpf_cadastrar" required placeholder="Digite seu cpf">
+                <div class="input-group">
+                    <div>
+                        <label for="cpf_cadastrar">CPF</label>
+                        <input type="number" id="cpf_cadastrar" name="cpf_cadastrar" required placeholder="Digite seu CPF">
+                    </div>
 
-                <label for="endereco_cadastrar">Endereço</label>
-                <input type="text" id="endereco_cadastrar" name="endereco_cadastrar" required placeholder="Digite seu endereço">
+                    <div>
+                        <label for="telefone_cadastrar">Telefone</label>
+                        <input type="number" id="telefone_cadastrar" name="telefone_cadastrar" required placeholder="Digite seu telefone">
+                    </div>
+                </div>
 
-                <label for="telefone_cadastrar">Telefone</label>
-                <input type="number" id="telefone_cadastrar" name="telefone_cadastrar" required placeholder="Digite seu telefone">
+                <div class="input-group">
+                    <div>
+                        <label for="nascimento_cadastrar">Data de nascimento</label>
+                        <input type="date" id="nascimento_cadastrar" name="nascimento_cadastrar" required placeholder="Digite sua data de nascimento">
+                    </div>
 
-                <label for="nascimento_cadastrar">Data de nascimento</label>
-                <input type="date" id="nascimento_cadastrar" name="nascimento_cadastrar" required placeholder="Digite sua data de nascimento">
-
-                <label for="senha_cadastrar">Senha</label>
-                <input type="password" id="senha_cadastrar" name="senha_cadastrar" required placeholder="Digite sua Senha">
+                    <div>
+                        <label for="senha_cadastrar">Senha</label>
+                        <input type="password" id="senha_cadastrar" name="senha_cadastrar" required placeholder="Digite sua Senha">
+                    </div>
+                </div>
 
                 <input style="display:none;" type="text" id="tipo_cadastrar" name="tipo_cadastrar" required value="Aluno">
 
