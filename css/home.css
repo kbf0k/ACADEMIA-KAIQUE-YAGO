@@ -216,14 +216,13 @@ main {
 /* SERVIÇOS */
 #servicos {
     background: linear-gradient(180deg, white, #00356d);
-    height: 80vh;
-    width: 100%;
+    padding: 50px 0;
+    text-align: center;
 }
 
 #servicos h1 {
-    text-align: center;
     font-size: 40px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 #servicos h1 span {
@@ -237,13 +236,15 @@ main {
 }
 
 #servicos_container {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-content: center;
+    padding: 70px;
+    margin: 0 auto;
 }
 
 .card {
-    width: 300px;
     background: white;
     padding: 20px;
     border-radius: 10px;
@@ -256,6 +257,27 @@ main {
     transform: scale(1.05);
     box-shadow: 0 10px 15px #00356d88;
 }
+
+/* BOTÃO "VER TODAS AS AULAS" */
+.botao-container {
+    margin-top: 30px;
+}
+
+.botao-ver-mais {
+    display: inline-block;
+    padding: 15px 25px;
+    background-color: #007BFF;
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.botao-ver-mais:hover {
+    background-color: #0056b3;
+}
+
 
 .card img {
     max-width: 120px;
