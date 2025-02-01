@@ -133,7 +133,7 @@ main {
     backdrop-filter: blur(30px);
     border-radius: 20px;
     width: 700px;
-    height: 620px;
+    height: 700px;
     box-shadow: 0 0 15px #00356d;
     padding: 50px;
 }
@@ -147,7 +147,13 @@ main {
     text-decoration: none;
     color: black;
     padding: 2px 10px;
+    transition: 0.2s ease-in-out;
 }
+
+#cadastrar #cadastrar-voltar:hover{
+    background-color: #0056b3;
+    color: white;
+} 
 
 #cadastrar #logo {
     max-width: 170px;

@@ -11,7 +11,7 @@ include('config.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aulas</title>
     <link rel="stylesheet" href="../css/home.css">
-    <script src="../js/home.js" defer></script>
+    <script src="../js/aulas.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
 
 </head>

@@ -60,10 +60,11 @@
     text-decoration: none;
     font-weight: bold;
     margin-right: 20px;
+    transition: 0.2s ease-in-out;
 }
 
 .navbar #nome_usuario:hover {
-    background-color: #007BFF;
+    background-color: #007bff7c;
 }
 
 .navbar #entrar {
@@ -156,6 +157,11 @@ main {
     border-radius: 20px;
     position: sticky;
     text-decoration: none;
+    transition: 0.2s ease-in-out;
+}
+
+#home_texto .saiba_mais:hover {
+    background-color:#0057b37c;
 }
 
 #sobre {
@@ -211,6 +217,11 @@ main {
     border-radius: 20px;
     position: sticky;
     text-decoration: none;
+    transition: 0.2s ease-in-out;
+}
+
+#sobre_text .saiba_mais:hover {
+    background-color:#00356d;
 }
 
 /* SERVIÇOS */
@@ -313,43 +324,4 @@ main {
 
 .footer p {
     color: white;
-}
-
-
-
-@media (max-width: 768px) {
-    #sobre {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    #sobre-text {
-        width: 100%;
-    }
-}
-
-@media (max-width: 768px) {
-    .navbar ul {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        background: #000;
-        width: 100%;
-        text-align: center;
-        padding: 10px 0;
-    }
-
-    .navbar .logo {
-        width: 155px;
-    }
-
-    .navbar ul.show {
-        display: flex;
-    }
-
-    .menu-icon {
-        display: block;
-    }
 }

@@ -1,5 +1,6 @@
 <?php
 include('config.php');
+session_start();
 
 // Consulta todos os instrutores cadastrados
 $sql = "SELECT * FROM instrutor";
@@ -16,6 +17,8 @@ $result = $conexao->query($sql);
     <title>Gerenciamento de Instrutores</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+    <script src="../js/instrutor.js" defer></script>
 </head>
 <nav class="navbar">
     <a href="home.php"><img src="../img/logo3.png" alt="" class="logo"></a>

@@ -1,12 +1,14 @@
 <?php
 include('config.php');
-
-// Verificar se foi feito algum filtro de pesquisa
-$search = isset($_GET['search']) ? $_GET['search'] : '';
+session_start();
 
 // Consulta com filtro de pesquisa
-$sql = "SELECT * FROM aluno WHERE aluno_nome LIKE '%$search%'";
+$sql = "SELECT a.fk_aluno_cod, al.aluno_nome, a.aula_tipo 
+        FROM aula a
+        JOIN aluno al ON a.fk_aluno_cod = al.aluno_cod";
+
 $result = $conexao->query($sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -20,6 +22,7 @@ $result = $conexao->query($sql);
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
     <link rel="stylesheet" href="../css/alunos.css">
+    <script src="../js/alunos.js" defer></script>
 </head>
 
 <body>
@@ -46,11 +49,6 @@ $result = $conexao->query($sql);
     <div class="container mt-4">
         <h2 class="text-center">Alunos</h2>
 
-        <!-- Campo de pesquisa -->
-        <form method="GET" class="mb-3">
-            <input type="text" name="search" class="form-control" placeholder="Pesquisar por nome ou curso" value="<?= htmlspecialchars($search) ?>">
-        </form>
-
         <!-- Botão para abrir o modal de adicionar aluno -->
         <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#modalAdicionarAluno">Adicionar Aluno</button>
 
@@ -67,15 +65,15 @@ $result = $conexao->query($sql);
                 <?php while ($row = $result->fetch_assoc()) { ?>
                     <tr>
                         <td><?= htmlspecialchars($row['aluno_nome']) ?></td>
-                        <td><?= htmlspecialchars($row['aluno_curso']) ?></td>
+                        <td><?= htmlspecialchars($row['aula_tipo']) ?></td>
                         <td>
                             <button class="btn btn-primary btn-sm btn-editar"
-                                data-id="<?= $row['aluno_cod'] ?>"
+                                data-id="<?= $row['fk_aluno_cod'] ?>"
                                 data-nome="<?= htmlspecialchars($row['aluno_nome']) ?>"
-                                data-curso="<?= htmlspecialchars($row['aluno_curso']) ?>"
+                                data-curso="<?= htmlspecialchars($row['aula_tipo']) ?>"
                                 data-bs-toggle="modal" data-bs-target="#modalEditarAluno">Editar</button>
 
-                            <a href="excluir_aluno.php?id=<?= $row['aluno_cod'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
+                            <a href="excluir_aluno.php?id=<?= $row['fk_aluno_cod'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
                         </td>
                     </tr>
                 <?php } ?>

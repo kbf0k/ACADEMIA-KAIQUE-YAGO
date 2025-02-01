@@ -24,8 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt2 = $conexao->prepare($sql2);
     $stmt2->bind_param('ssssiss', $nome_cadastro, $email_cadastro, $cpf_cadastro, $endereco_cadastro, $telefone_cadastro, $nascimento_cadastro, $senha_criptografada);
     $stmt2->execute();
-
-    $cadastro_sucesso = true;
 }
 ?>
 
@@ -36,7 +34,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/login-cadastro.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
     <title>Cadastrar</title>
 </head>
 
@@ -66,6 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <input type="number" id="cpf_cadastrar" name="cpf_cadastrar" required placeholder="Digite seu CPF">
                     </div>
 
+
                     <div>
                         <label for="telefone_cadastrar">Telefone</label>
                         <input type="number" id="telefone_cadastrar" name="telefone_cadastrar" required placeholder="Digite seu telefone">
@@ -84,28 +82,40 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                 </div>
 
+                <div class="input-group">
+                    <div>
+                        <label for="endereco_cadastrar">Endereço</label>
+                        <input type="text" id="endereco_cadastrar" name="endereco_cadastrar" required placeholder="Digite seu endereço">
+                    </div>
+                </div>
                 <input style="display:none;" type="text" id="tipo_cadastrar" name="tipo_cadastrar" required value="Aluno">
 
                 <button id="entrar-cadastrar" type="submit">Entrar</button>
             </form>
         </div>
     </main>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            <?php if ($cadastro_sucesso): ?>
+    <?php if ($_SERVER['REQUEST_METHOD'] == 'POST'): ?>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Usuário cadastrado com sucesso!',
+                text: 'Você será redirecionado para a página de login.',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "login.php";
+                }
+            });
+            <?php else: ?>
                 Swal.fire({
-                    icon: 'success',
-                    title: 'Usuário cadastrado com sucesso!',
-                    text: 'Você será redirecionado para a página de login.',
+                    icon: 'error',
+                    title: 'Erro no cadastro!',
+                    text: '<?= $erro_mensagem ?>',
                     confirmButtonText: 'OK'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.href = "login.php";
-                    }
                 });
             <?php endif; ?>
-        });
-    </script>
+        </script>
 </body>
 
 </html>

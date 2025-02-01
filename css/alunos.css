@@ -27,7 +27,8 @@
 }
 
 .navbar ul li {
-    margin-right: 100px;
+    margin-right: 60px;
+    margin-left: 60px;
     list-style: none;
 }
 
@@ -80,6 +81,7 @@
 #logout {
     max-width: 40px;
     cursor: pointer;
+    margin-right: 20px;
 }
 
 .section-title {
