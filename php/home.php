@@ -85,7 +85,7 @@ include('config.php');
             <p>Dança animada e divertida para queimar calorias com alegria.</p>
         </div>
         <div class="card">
-            <img src="../img/icone_pilates.png" alt="Pilates">
+            <img src="../img/icone_pilates2.png" alt="Pilates">
             <h3>Pilates</h3>
             <p>Fortaleça seu corpo com exercícios que melhoram a postura e flexibilidade.</p>
         </div>

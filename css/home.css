@@ -138,7 +138,7 @@ main {
 #home_texto span {
     color: #007BFF;
     text-shadow: 0 0 4px black;
-    font-size: 100px;
+    font-size: 85px;
     font-weight: bold;
     position: sticky;
 }
@@ -254,7 +254,6 @@ main {
     padding: 70px;
     margin: 0 auto;
 }
-
 .card {
     background: white;
     padding: 20px;
