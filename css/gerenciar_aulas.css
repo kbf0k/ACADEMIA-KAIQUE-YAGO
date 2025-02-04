@@ -684,14 +684,18 @@ div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-cancel) {
     border: 0;
     border-radius: .25em;
     background: initial;
-    background-color: red !important;
+    background-color: red;
     color: #fff;
     font-size: 1em;
 }
 
-div:where(.swal2-container) button:where(.swal2-styled):not([disabled]) {
-    cursor: pointer;
+div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-confirm) {
+    border: 0;
+    border-radius: .25em;
+    background: initial;
     background-color: #007BFF;
+    color: #fff;
+    font-size: 1em;
 }
 
 div:where(.swal2-container).swal2-center>.swal2-popup {
@@ -700,4 +704,32 @@ div:where(.swal2-container).swal2-center>.swal2-popup {
     place-self: center center;
     max-width: 500px !important;
     height: 350px !important;
+}
+
+div:where(.swal2-container) h2:where(.swal2-title) {
+    position: relative;
+    max-width: 100%;
+    margin: none !important;
+    padding: .8em 1em 0;
+    color: inherit;
+    font-size: 1.875em;
+    font-weight: 600;
+    text-align: center;
+    text-transform: none;
+    word-wrap: break-word;
+    cursor: initial;
+}
+
+div:where(.swal2-container) h2:where(.swal2-title) {
+    position: relative;
+    max-width: 100%;
+    margin: revert !important;
+    padding: .8em 1em 0;
+    color: inherit;
+    font-size: 1.875em;
+    font-weight: 600;
+    text-align: center;
+    text-transform: none;
+    word-wrap: break-word;
+    cursor: initial;
 }
