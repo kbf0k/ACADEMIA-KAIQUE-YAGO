@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -31,7 +31,8 @@ table {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-th, td {
+th,
+td {
     padding: 12px 20px;
     text-align: left;
     border-bottom: 1px solid #ddd;
@@ -392,7 +393,7 @@ main {
     margin-bottom: 5px;
 }
 
-.inscrever-btn{
+.inscrever-btn {
     padding: 10px 20px;
     margin-top: 30px;
     background-color: #0056b3;
@@ -632,7 +633,8 @@ main {
         list-style: none;
     }
 
-    th, td {
+    th,
+    td {
         padding: 12px 10px;
         text-align: left;
         border-bottom: 1px solid #ddd;
@@ -662,4 +664,40 @@ main {
         transform: translateY(-20px);
         opacity: 0;
     }
+}
+
+.swal-edit-container .swal2-html-container {
+    overflow: hidden;
+    display: flex !important;
+    justify-content: end !important;
+    align-items: baseline !important;
+    flex-direction: column !important;
+    background-color: #f9f4e1 !important;
+}
+
+div:where(.swal2-container) .swal2-input {
+    width: 50%;
+    font-size: 17px;
+}
+
+div:where(.swal2-container) button:where(.swal2-styled):where(.swal2-cancel) {
+    border: 0;
+    border-radius: .25em;
+    background: initial;
+    background-color: red !important;
+    color: #fff;
+    font-size: 1em;
+}
+
+div:where(.swal2-container) button:where(.swal2-styled):not([disabled]) {
+    cursor: pointer;
+    background-color: #007BFF;
+}
+
+div:where(.swal2-container).swal2-center>.swal2-popup {
+    grid-column: 2;
+    grid-row: 2;
+    place-self: center center;
+    max-width: 500px !important;
+    height: 350px !important;
 }
