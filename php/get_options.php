@@ -2,34 +2,46 @@
 session_start();
 require 'config.php'; // Arquivo de conexão com o banco de dados
 
-// Buscar os tipos de aula sem duplicação
-$sql_tipo_aula = "SELECT DISTINCT aula_tipo FROM aula"; // Ajuste conforme sua estrutura
-$sql_instrutores = "SELECT instrutor_cod, instrutor_nome FROM instrutor"; 
+// Consultar a definição da tabela para pegar o enum de tipos de aula
+$sql = "DESCRIBE aula";
+$result = $conexao->query($sql);
 
-$result_tipo_aula = $conexao->query($sql_tipo_aula);
-$result_instrutores = $conexao->query($sql_instrutores);
-
-// Preparar arrays para os resultados
-$tipos_aula = [];
+$aula_tipos = [];
 $instrutores = [];
 
-// Preencher os arrays
-while ($row = $result_tipo_aula->fetch_assoc()) {
-    $tipos_aula[] = $row['aula_tipo'];
+// Pegando os tipos de aula (ENUM)
+if ($result->num_rows > 0) {
+    // Percorrer o resultado para encontrar o campo 'aula_tipo'
+    while ($row = $result->fetch_assoc()) {
+        if ($row['Field'] == 'aula_tipo') {
+            // Extrair os valores do enum
+            preg_match_all("/'(.*?)'/", $row['Type'], $matches);
+            $aula_tipos = $matches[1]; // Os valores do enum
+        }
+    }
+} else {
+    echo "Tabela não encontrada.";
 }
 
-while ($row = $result_instrutores->fetch_assoc()) {
-    $instrutores[] = [
-        'cod' => $row['instrutor_cod'], 
-        'nome' => $row['instrutor_nome']
-    ];
-}
+// Consultar os instrutores
+$sql_instrutores = "SELECT instrutor_cod, instrutor_nome FROM instrutor";
+$result_instrutores = $conexao->query($sql_instrutores);
 
-// Retornar os dados como JSON
-echo json_encode([
-    'tipos_aula' => $tipos_aula,
-    'instrutores' => $instrutores
-]);
+// Preencher o array de instrutores
+if ($result_instrutores->num_rows > 0) {
+    while ($row = $result_instrutores->fetch_assoc()) {
+        $instrutores[] = [
+            'cod' => $row['instrutor_cod'], 
+            'nome' => $row['instrutor_nome']
+        ];
+    }
+}
 
 $conexao->close();
+
+// Retornar os dados como JSON (tipos de aula e instrutores)
+echo json_encode([
+    'tipos_aula' => $aula_tipos,
+    'instrutores' => $instrutores
+]);
 ?>

@@ -3,6 +3,7 @@ session_start();
 require 'config.php'; // Arquivo de conexão com o banco de dados
 
 $sql = "SELECT 
+            aula.aula_cod, 
             aula.aula_tipo, 
             aula.aula_data, 
             instrutor.instrutor_nome, 
@@ -135,9 +136,18 @@ $conexao->close();
             margin-bottom: 5px;
         }
 
-        .criar-btn {
-            display: block;
-            width: 40%;
+        /* Container para os botões */
+        .botao-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .criar-btn,
+        .gerenciar-btn {
+            flex: 1 1 45%;
             padding: 10px;
             background: #007BFF;
             color: white;
@@ -147,11 +157,30 @@ $conexao->close();
             cursor: pointer;
             transition: 0.3s;
             text-decoration: none;
+            box-sizing: border-box;  /* Inclui o padding na largura total do botão */
         }
-
-        .criar-btn:hover {
+        
+        /* Hover */
+        .criar-btn:hover,
+        .gerenciar-btn:hover {
             background: #0056b3;
         }
+        
+        /* Remove o link dentro do botão, se necessário */
+        .criar-btn a,
+        .gerenciar-btn a {
+            text-decoration: none;
+            color: white;
+        }
+        
+        /* Estilo para telas menores */
+        @media (max-width: 600px) {
+            .criar-btn,
+            .gerenciar-btn {
+                flex: 1 1 100%;  /* Faz com que os botões ocupem 100% da largura */
+            }
+        }
+
     </style>
 
 </head>
@@ -194,7 +223,7 @@ $conexao->close();
 
         <section id="sobre">
             <div class="sobre-container">
-                <h2>Sobre as Aulas</h2>
+                <h2>SOBRE AS AULAS</h2>
                 <p>As aulas são oferecidas por instrutores altamente qualificados para garantir sua evolução no bem-estar e saúde.</p>
                 <p>Explore nossas opções e agende sua participação para aproveitar os benefícios de um treinamento planejado.</p>
             </div>
@@ -228,7 +257,7 @@ $conexao->close();
 
         <!-- Seção de Aulas Agendadas -->
         <section id="aulas">
-            <h1>Aulas Agendadas</h1>
+            <h1>AULAS AGENDADAS</h1>
             <div class="aulas-container">
                 <?php if ($result->num_rows > 0): ?>
                     <?php while ($row = $result->fetch_assoc()): ?>
@@ -237,39 +266,50 @@ $conexao->close();
                             <p><strong>Data:</strong> <?php echo date('d/m/Y H:i', strtotime($row['aula_data'])); ?></p>
                             <p><strong>Instrutor:</strong> <?php echo htmlspecialchars($row['instrutor_nome'] ?: 'Não definido'); ?></p>
                             <p><strong>Aluno:</strong> <?php echo htmlspecialchars($row['aluno_nome'] ?: 'Não definido'); ?></p>                        
-                        </div>
-                        
-                        <?php endwhile; ?>
-                        <?php else: ?>
-                            <p>Nenhuma aula agendada.</p>
+                            
+                            <?php if ($row['aluno_nome'] === null): ?>
+                                <!-- Verifica se o usuário é um aluno e se a aula não tem aluno inscrito -->
+                                <?php if (isset($_SESSION['tipo_sessao']) && $_SESSION['tipo_sessao'] === 'aluno' && $row['aluno_nome'] === null): ?>
+                                    <button class="inscrever-btn" data-aula-id="<?php echo htmlspecialchars($row['aula_cod']); ?>">Quero me inscrever</button>
+                                <?php endif; ?>
                             <?php endif; ?>
                         </div>
-                        <button class="criar-btn">Criar Aula</button>
-                        <button class="gerenciar-btn">Gerenciar Aulas</button>
-                        <!-- Modal de inscrição -->
-                        <div id="inscricaoModal" class="modal"> 
-                            <div class="modal-content">
-                                <span class="close">&times;</span>
-                                <h2>Cadastrar Nova Aula</h2>
-                                <form id="formAula">
-                                    <label for="aula_tipo">Tipo de Aula:</label>
-                                    <select id="aula_tipo" required>
-                                        <!-- As opções serão preenchidas com os dados do banco -->
-                                    </select><br><br>
-                        
-                                    <label for="aula_data">Data da Aula:</label>
-                                    <input type="date" id="aula_data" required><br><br>
-                        
-                                    <label for="instrutor">Instrutor:</label>
-                                    <select id="instrutor" required>
-                                        <!-- As opções serão preenchidas com os dados do banco -->
-                                    </select><br><br>
-                        
-                                    <button type="submit">Cadastrar Aula</button>
-                                </form>
-                            </div>
-                        </div>
-            </section>
+                    <?php endwhile; ?>
+                <?php else: ?>
+                    <p>Não há aulas disponíveis no momento.</p>
+                <?php endif; ?>
+            </div>
+            <?php if (isset($_SESSION['tipo_sessao']) && $_SESSION['tipo_sessao'] === 'aluno'): ?>
+                <div class="botao-container">
+                    <button class="criar-btn">Criar Aula</button>
+                    <button class="gerenciar-btn"><a href="gerenciar_aulas.php">Gerenciar Aulas</a></button>
+                </div>
+            <?php endif; ?>
+
+            <!-- Modal de inscrição -->
+            <div id="inscricaoModal" class="modal"> 
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Cadastrar Nova Aula</h2>
+                    <form id="formAula">
+                        <label for="aula_tipo">Tipo de Aula:</label>
+                        <select id="aula_tipo" required>
+                            <!-- As opções serão preenchidas com os dados do banco -->
+                        </select><br><br>
+            
+                        <label for="aula_data">Data da Aula:</label>
+                        <input type="date" id="aula_data" required><br><br>
+            
+                        <label for="instrutor">Instrutor:</label>
+                        <select id="instrutor" required>
+                            <!-- As opções serão preenchidas com os dados do banco -->
+                        </select><br><br>
+            
+                        <button type="submit">Cadastrar Aula</button>
+                    </form>
+                </div>
+            </div>
+        </section>
     </main>
 
     <div class="footer">

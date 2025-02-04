@@ -42,8 +42,6 @@ window.addEventListener('click', function(event) {
 });
 
 // Envia o formulário e insere os dados no banco
-// Envia o formulário e insere os dados no banco
-// Envia o formulário e insere os dados no banco
 document.getElementById('formAula').addEventListener('submit', function(event) {
     event.preventDefault(); // Impede o envio tradicional do formulário
 
@@ -91,37 +89,97 @@ document.getElementById('formAula').addEventListener('submit', function(event) {
 
 
 // Função para preencher os selects com os dados do banco
+// Função para preencher os selects com os dados do banco
 function preencherSelects() {
-    fetch('../php/get_options.php')
-        .then(response => response.json())
+    fetch('get_options.php') // Requisição para o PHP
+        .then(response => response.json()) // Converte a resposta para JSON
         .then(data => {
             // Preencher o select de tipo de aula
             const aulaTipoSelect = document.getElementById('aula_tipo');
             aulaTipoSelect.innerHTML = ""; // Limpa antes de adicionar novas opções
-            data.tipos_aula.forEach(tipo => {
-                const option = document.createElement('option');
-                option.value = tipo;
-                option.textContent = tipo;
-                aulaTipoSelect.appendChild(option);
-            });
+
+            if (data.tipos_aula.length === 0) {
+                aulaTipoSelect.innerHTML = "<option value=''>Nenhum tipo de aula encontrado</option>";
+            } else {
+                // Adiciona as opções de tipo de aula
+                data.tipos_aula.forEach(tipo => {
+                    const option = document.createElement('option');
+                    option.value = tipo;
+                    option.textContent = tipo;
+                    aulaTipoSelect.appendChild(option);
+                });
+            }
 
             // Preencher o select de instrutores
             const instrutorSelect = document.getElementById('instrutor');
             instrutorSelect.innerHTML = ""; // Limpa antes de adicionar novas opções
-            data.instrutores.forEach(instrutor => {
-                const option = document.createElement('option');
-                option.value = instrutor.cod; // O value agora é o código do instrutor
-                option.textContent = instrutor.nome;
-                instrutorSelect.appendChild(option);
-            });
+
+            if (data.instrutores.length === 0) {
+                instrutorSelect.innerHTML = "<option value=''>Nenhum instrutor encontrado</option>";
+            } else {
+                // Adiciona as opções de instrutores
+                data.instrutores.forEach(instrutor => {
+                    const option = document.createElement('option');
+                    option.value = instrutor.cod; // O value agora é o código do instrutor
+                    option.textContent = instrutor.nome;
+                    instrutorSelect.appendChild(option);
+                });
+            }
         })
         .catch(error => {
             console.error('Erro ao carregar os dados:', error);
         });
 }
 
-// Chama a função para preencher os selects ao carregar a página
+// Chama a função para preencher os selects quando a página carregar
 window.onload = preencherSelects;
+
+
+document.querySelectorAll('.inscrever-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        const aulaId = this.getAttribute('data-aula-id');
+        
+        // Pergunta se o aluno quer se inscrever
+        Swal.fire({
+            title: 'Quer se inscrever nesta aula?',
+            showCancelButton: true,
+            confirmButtonText: 'Sim',
+            cancelButtonText: 'Não',
+        }).then(result => {
+            if (result.isConfirmed) {
+                // Requisição para atualizar a inscrição no banco
+                fetch('../php/inscrever_aula.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ aulaId: aulaId }) // Envia o ID da aula
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Exibe a mensagem de sucesso
+                        Swal.fire('Sucesso!', data.message, 'success').then(() => {
+                            // Desabilita o botão ou muda seu texto
+                            button.disabled = true;
+                            button.textContent = 'Inscrição realizada';
+                            location.reload(); // Recarga a página ou atualiza a interface
+                        });
+                    } else {
+                        // Exibe erro caso falhe
+                        Swal.fire('Erro!', data.message, 'error');
+                    }
+                })
+                .catch(error => {
+                    // Exibe erro se não conseguir fazer a requisição
+                    Swal.fire('Erro!', 'Houve um problema ao tentar se inscrever.', 'error');
+                });
+            }
+        });
+    });
+});
+
+
 
 
 
