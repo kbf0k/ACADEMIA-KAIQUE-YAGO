@@ -11,11 +11,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-image: url(../img/background-login.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    min-height: 100vh;
 }
 
 .container {
@@ -23,6 +19,17 @@ main {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    background-image: url(../img/background2.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+#video-background {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 #login {
@@ -35,6 +42,8 @@ main {
     height: 600px;
     box-shadow: 0 0 15px #00356d;
     padding: 50px;
+    position: absolute;
+    z-index: 1;
 }
 
 #login #logo {
@@ -83,10 +92,10 @@ main {
     transition: 0.2s ease-in-out;
 }
 
-#login #cadastrar-login:hover{
+#login #cadastrar-login:hover {
     background-color: #0056b3;
     color: white;
-} 
+}
 
 
 #login #entrar-login {
@@ -98,10 +107,10 @@ main {
     transition: 0.2s ease-in-out;
 }
 
-#login #entrar-login:hover{
+#login #entrar-login:hover {
     background-color: #0056b3;
     color: white;
-} 
+}
 
 /* CADASTRAR */
 /* CADASTRAR */
@@ -119,11 +128,14 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
     height: 100vh;
-    background-image: url(../img/background-login.jpg) fixed;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+}
+
+#video-background {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 #cadastrar {
@@ -136,10 +148,12 @@ main {
     height: 700px;
     box-shadow: 0 0 15px #00356d;
     padding: 50px;
+    position: absolute;
+    z-index: 1;
 }
 
 
-#cadastrar #cadastrar-voltar{
+#cadastrar #cadastrar-voltar {
     border-radius: 20px;
     border: 1px solid #00356d;
     cursor: pointer;
@@ -150,10 +164,10 @@ main {
     transition: 0.2s ease-in-out;
 }
 
-#cadastrar #cadastrar-voltar:hover{
+#cadastrar #cadastrar-voltar:hover {
     background-color: #0056b3;
     color: white;
-} 
+}
 
 #cadastrar #logo {
     max-width: 170px;
@@ -175,7 +189,7 @@ main {
 .input-group {
     display: flex;
     gap: 20px;
-    justify-content: space-between; 
+    justify-content: space-between;
 }
 
 .input-group div {
@@ -220,7 +234,37 @@ main {
     transition: 0.2s ease-in-out;
 }
 
-#cadastrar #entrar-cadastrar:hover{
+#cadastrar #entrar-cadastrar:hover {
     background-color: #0056b3;
     color: white;
-} 
+}
+
+@media (max-width: 768px) {
+    #login {
+        width: 370px;
+        height: 600px;
+        padding: 40px;
+    }
+
+    #login p {
+        display: flex;
+        align-items: center;
+    }
+
+    #login #cadastrar-login {
+        margin-left: auto;
+        border-radius: 20px;
+        border: 1px solid #00356d;
+        padding: 0 8px;
+        text-decoration: none;
+        color: black;
+        background-color: white;
+        transition: 0.2s ease-in-out;
+    }
+
+    #cadastrar {
+        width: 390px;
+        height: auto;
+        padding: 18px;
+    }
+}

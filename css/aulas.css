@@ -247,39 +247,39 @@ main {
 
 
 
-@media (max-width: 768px) {
-    #sobre {
-        flex-direction: column;
-        text-align: center;
+    @media (max-width: 768px) {
+        #sobre {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        #sobre-text {
+            width: 100%;
+        }
     }
 
-    #sobre-text {
-        width: 100%;
-    }
-}
+    @media (max-width: 768px) {
+        .navbar ul {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            background: #000;
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+        }
 
-@media (max-width: 768px) {
-    .navbar ul {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        background: #000;
-        width: 100%;
-        text-align: center;
-        padding: 10px 0;
-    }
+        .navbar .logo {
+            width: 155px;
+        }
 
-    .navbar .logo {
-        width: 155px;
-    }
+        .navbar ul.show {
+            display: flex;
+        }
 
-    .navbar ul.show {
-        display: flex;
+        .menu-icon {
+            display: block;
+        }
     }
-
-    .menu-icon {
-        display: block;
-    }
-}

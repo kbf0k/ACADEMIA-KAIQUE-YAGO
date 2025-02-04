@@ -17,7 +17,7 @@ include('config.php');
 </head>
 <header>
     <nav class="navbar">
-        <a href="home.php"><img src="../img/logo3.png" alt="" class="logo"></a>
+        <a href="home.php"><img src="../img/logo_2.png" alt="" class="logo"></a>
         <ul>
             <li><a href="home.php">Início</a></li>
             <li><a href="alunos.php">Alunos</a></li>
@@ -32,7 +32,7 @@ include('config.php');
             </div>
         <?php else: ?>
             <a href="login.php" id="entrar">Entrar</a>
-            <div class="menu-icon" onclick="toggleMenu()">☰</div>
+            <div class="menu-icon">☰</div>
         <?php endif; ?>
     </nav>
 
@@ -58,47 +58,47 @@ include('config.php');
                     Com uma estrutura moderna e instrutores qualificados, proporcionamos a melhor experiência em treino e bem-estar.</p>
                 <a href="#servicos" class="saiba_mais">Saiba Mais</a>
             </div>
-            <img class="img-sobre" src="../img/logo.png" alt="Academia">
+            <img class="img-sobre" src="../img/logo_1.png" alt="Academia">
         </section>
 
         <section id="servicos">
-    <h1>EXPLORE NOSSOS <span>SERVIÇOS</span></h1>
-    <div id="servicos_container">
-        <div class="card">
-            <img src="../img/icone_musculaçao.png" alt="Musculação">
-            <h3>Musculação</h3>
-            <p>Equipamentos modernos e acompanhamento profissional para atingir seus objetivos.</p>
-        </div>
-        <div class="card">
-            <img src="../img/icone_crossfit.png" alt="Crossfit">
-            <h3>Crossfit</h3>
-            <p>Treinamento de alta intensidade para quem busca força e resistência.</p>
-        </div>
-        <div class="card">
-            <img src="../img/icone_yoga.png" alt="Yoga">
-            <h3>Yoga</h3>
-            <p>Conecte mente e corpo com nossas aulas de Yoga para todos os níveis.</p>
-        </div>
-        <div class="card">
-            <img src="../img/icone_zumba.png" alt="Zumba">
-            <h3>Zumba</h3>
-            <p>Dança animada e divertida para queimar calorias com alegria.</p>
-        </div>
-        <div class="card">
-            <img src="../img/icone_pilates2.png" alt="Pilates">
-            <h3>Pilates</h3>
-            <p>Fortaleça seu corpo com exercícios que melhoram a postura e flexibilidade.</p>
-        </div>
-        <div class="card">
-            <img src="../img/icone_personal.png" alt="Personal Trainer">
-            <h3>Personal Trainer</h3>
-            <p>Treinos exclusivos e acompanhamento personalizado para seus objetivos.</p>
-        </div>
-    </div>
-    <div class="botao-container">
-        <a href="aulas.php" class="botao-ver-mais">Ver todas as aulas</a>
-    </div>
-</section>
+            <h1>EXPLORE NOSSOS <span>SERVIÇOS</span></h1>
+            <div id="servicos_container">
+                <div class="card">
+                    <img src="../img/icone_musculaçao.png" alt="Musculação">
+                    <h3>Musculação</h3>
+                    <p>Equipamentos modernos e acompanhamento profissional para atingir seus objetivos.</p>
+                </div>
+                <div class="card">
+                    <img src="../img/icone_crossfit.png" alt="Crossfit">
+                    <h3>Crossfit</h3>
+                    <p>Treinamento de alta intensidade para quem busca força e resistência.</p>
+                </div>
+                <div class="card">
+                    <img src="../img/icone_yoga.png" alt="Yoga">
+                    <h3>Yoga</h3>
+                    <p>Conecte mente e corpo com nossas aulas de Yoga para todos os níveis.</p>
+                </div>
+                <div class="card">
+                    <img src="../img/icone_zumba.png" alt="Zumba">
+                    <h3>Zumba</h3>
+                    <p>Dança animada e divertida para queimar calorias com alegria.</p>
+                </div>
+                <div class="card">
+                    <img src="../img/icone_pilates2.png" alt="Pilates">
+                    <h3>Pilates</h3>
+                    <p>Fortaleça seu corpo com exercícios que melhoram a postura e flexibilidade.</p>
+                </div>
+                <div class="card">
+                    <img src="../img/icone_personal.png" alt="Personal Trainer">
+                    <h3>Personal Trainer</h3>
+                    <p>Treinos exclusivos e acompanhamento personalizado para seus objetivos.</p>
+                </div>
+            </div>
+            <div class="botao-container">
+                <a href="aulas.php" class="botao-ver-mais">Ver todas as aulas</a>
+            </div>
+        </section>
 
 
     </main>
@@ -107,9 +107,16 @@ include('config.php');
         <p>&copy; 2025 HYPERFORCE - Todos os direitos reservados.</p>
     </div>
     <script>
-        function toggleMenu() {
-            document.querySelector(".navbar ul").classList.toggle("show");
-        }
+        const menu = document.querySelector('.navbar ul');
+        const menuIcon = document.querySelector('.menu-icon');
+
+        menuIcon.addEventListener('click', () => {
+            if (menu.classList.contains('show')) {
+                menu.classList.remove('show');
+            } else {
+                menu.classList.add('show');
+            }
+        });
     </script>
 
 </body>

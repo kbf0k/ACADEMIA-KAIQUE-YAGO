@@ -161,7 +161,7 @@ main {
 }
 
 #home_texto .saiba_mais:hover {
-    background-color:#0057b37c;
+    background-color: #0057b37c;
 }
 
 #sobre {
@@ -221,7 +221,7 @@ main {
 }
 
 #sobre_text .saiba_mais:hover {
-    background-color:#00356d;
+    background-color: #00356d;
 }
 
 /* SERVIÇOS */
@@ -254,6 +254,7 @@ main {
     padding: 70px;
     margin: 0 auto;
 }
+
 .card {
     background: white;
     padding: 20px;
@@ -323,4 +324,148 @@ main {
 
 .footer p {
     color: white;
+}
+
+@media (max-width: 768px) {
+
+    .navbar .logo {
+        max-width: 250px;
+        margin-left: 15px;
+        margin-top: 10px;
+    }
+
+    .navbar #nome_usuario {
+        padding: 2px 8px;
+        margin-left: 20px
+    }
+
+
+    .navbar #entrar {
+        margin: 0;
+    }
+
+    #home_texto {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: auto;
+    }
+
+    #home_texto h1 {
+        font-size: 40px;
+    }
+
+    #home_texto span {
+        font-size: 50px;
+    }
+
+    #home_texto p {
+        font-size: 18px;
+    }
+
+    #sobre {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #sobre_text {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: auto;
+        height: auto;
+        margin-right: auto;
+        margin-top: 40px;
+    }
+
+    #sobre_text h1 {
+        text-align: center;
+    }
+
+    #sobre_text p {
+        padding: 30px;
+        margin: 0;
+    }
+
+    #sobre_text .saiba_mais {
+        margin-bottom: 40px;
+    }
+
+    .img-sobre {
+        width: 250px;
+    }
+
+    #servicos_container {
+        grid-template-columns: none;
+    }
+
+    .footer p {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar ul {
+        visibility: hidden;
+        opacity: 0;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        background: linear-gradient(180deg, black, black, black, black, rgba(0, 0, 0, 0));
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        transition: visibility 0s 0.5s, opacity 0.5s ease-in-out;
+    }
+
+    .navbar .logo {
+        width: 155px;
+    }
+
+    .navbar ul.show {
+        visibility: visible;
+        opacity: 1;
+        transition: visibility 0s 0s, opacity 0.5s ease-in-out;
+    }
+
+    .navbar ul.hide {
+        animation: slideOut 0.5s ease-in-out forwards;
+    }
+
+    .menu-icon {
+        display: block;
+        margin-right: 30px;
+    }
+
+    .navbar ul li {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        list-style: none;
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
 }

@@ -41,8 +41,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <main>
         <div class="container">
+            <video id="video-background" src="../img/video-background2.mp4" autoplay muted loop ></video>
             <form action="" method="POST" id="login">
-                <img src="../img/logo.png" alt="" id="logo">
+                <img src="../img/logo_1.png" alt="" id="logo">
                 <h1>Entrar</h1>
 
                 <label for="email">Email</label>

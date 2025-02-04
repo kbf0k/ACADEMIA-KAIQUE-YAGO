@@ -40,9 +40,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <main id="main-cadastrar">
         <div class="container">
+            <video id="video-background" src="../img/video-background2.mp4" autoplay muted loop></video>
             <form action="" method="post" id="cadastrar">
                 <span><a id="cadastrar-voltar" href="login.php">Voltar</a></span>
-                <img src="../img/logo.png" alt="" id="logo">
+                <img src="../img/logo_1.png" alt="" id="logo">
                 <h1>Cadastrar-se</h1>
 
                 <div class="input-group">
@@ -107,13 +108,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     window.location.href = "login.php";
                 }
             });
-            <?php else: ?>
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Erro no cadastro!',
-                    text: '<?= $erro_mensagem ?>',
-                    confirmButtonText: 'OK'
-                });
             <?php endif; ?>
         </script>
 </body>
