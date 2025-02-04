@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3307
--- Tempo de geração: 04/02/2025 às 02:38
--- Versão do servidor: 10.4.32-MariaDB
--- Versão do PHP: 8.0.30
+-- Host: 127.0.0.1
+-- Tempo de geração: 04-Fev-2025 às 13:27
+-- Versão do servidor: 10.4.27-MariaDB
+-- versão do PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,11 +24,8 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `aluno`
+-- Estrutura da tabela `aluno`
 --
-
-CREATE DATABASE db_academia;
-USE db_academia;
 
 CREATE TABLE `aluno` (
   `aluno_cod` int(11) NOT NULL,
@@ -43,18 +40,22 @@ CREATE TABLE `aluno` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `aluno`
+-- Extraindo dados da tabela `aluno`
 --
 
 INSERT INTO `aluno` (`aluno_cod`, `aluno_nome`, `aluno_email`, `aluno_cpf`, `aluno_endereco`, `aluno_telefone`, `aluno_nasc`, `aluno_senha`, `fk_aula_cod`) VALUES
 (1, 'Kaique', 'kaique1245br@gmail.com', '123456789', 'Rua do Kaique', '123456789', '2025-02-11', '$2y$10$mM5F3zd9E/dLqJ8BLuasVuVxkpZF4lb/9t30H3fkl99Io2qMlUaYy', NULL),
 (2, 'Yago', 'yago@gmail.com', '123456789', 'Rua do yago', '123456789', '2025-02-11', '$2y$10$IR7jXWNG7fk7jjfZimYP6eu5AOhduLUzWC0BrgIKnPzJJcgyQena2', NULL),
-(3, 'Mamute', 'mamute@gmail.com', '123456789', 'Rua do mamute', '123456789', '2025-02-18', '$2y$10$MM07HFpt/b51FQ/K8yUXPeOzZyjC6u0m5ce1rHR4aFrjJaeWVNeg6', NULL);
+(3, 'Mamute', 'mamute@gmail.com', '123456789', 'Rua do mamute', '123456789', '2025-02-18', '$2y$10$MM07HFpt/b51FQ/K8yUXPeOzZyjC6u0m5ce1rHR4aFrjJaeWVNeg6', NULL),
+(4, 'Roberto', 'beto@gmail.com', '12345678', 'Rua do Roberto', '12345678', '2025-02-10', '$2y$10$FFiGlskjcYbzPNOvdjqV8.lAzFPH2q7JCU4LvjaEQs7FD5Sx4YQKC', NULL),
+(5, 'Raquel', 'kel@gmail.com', '12345678', 'Rua da Raquel', '12345678', '2025-02-10', '$2y$10$/upZJ/.Yjb0sMSJcZlxzau8l7bS4aUjPPfEH0kFpo6nY/hAG1Wb56', NULL),
+(6, 'Tiago', 'tiago@gmail.com', '12345678', 'Rua do tiago', '12345678', '2025-01-26', '$2y$10$AqdS1rbhGGCcu09qRKLBMujS0rCzQ38Pi.eEN.CwZFqaXHpJqA8IS', NULL),
+(7, 'Melissa', 'mel@gmail.com', '12345678', 'Rua das Melissas', '12345678', '2025-01-27', '$2y$10$.UvNz9EjEXsbfg7ViJqjde/ePeo.REI1MCwKtZQGY5vZ9X0QDdrmq', NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `aula`
+-- Estrutura da tabela `aula`
 --
 
 CREATE TABLE `aula` (
@@ -66,18 +67,22 @@ CREATE TABLE `aula` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `aula`
+-- Extraindo dados da tabela `aula`
 --
 
 INSERT INTO `aula` (`aula_cod`, `aula_tipo`, `aula_data`, `fk_instrutor_cod`, `fk_aluno_cod`) VALUES
 (8, 'Zumba', '2025-02-26 00:30:00', 2, 2),
 (13, 'Yoga', '2025-02-11 00:00:00', 1, 2),
-(15, 'Aeróbica', '2025-02-27 00:00:00', 1, NULL);
+(15, 'Aeróbica', '2025-02-27 00:00:00', 1, NULL),
+(17, 'Yoga', '2025-02-10 00:00:00', 2, NULL),
+(18, 'Musculação', '2025-02-11 00:00:00', 2, NULL),
+(19, 'Pilates', '2025-02-27 00:00:00', 1, NULL),
+(20, 'Crossfit', '2025-01-26 00:00:00', 2, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `instrutor`
+-- Estrutura da tabela `instrutor`
 --
 
 CREATE TABLE `instrutor` (
@@ -93,17 +98,23 @@ CREATE TABLE `instrutor` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `instrutor`
+-- Extraindo dados da tabela `instrutor`
 --
 
 INSERT INTO `instrutor` (`instrutor_cod`, `instrutor_nome`, `instrutor_email`, `instrutor_cpf`, `instrutor_endereco`, `instrutor_telefone`, `instrutor_nasc`, `instrutor_senha`, `instrutor_especialidade`) VALUES
-(1, 'Marcos', '', '', '', 0, '0000-00-00', '', 'Musculação'),
-(2, 'Brunão', 'brunao@gmail.com', '444557722', 'Rua dos Brunos', 1299874114, '2015-02-01', 'bruno123', 'Musculação');
+(1, 'Marcos', 'marcos@gmail.com', '12345678', 'Rua do Marcos', 12345678, '0000-00-00', '', 'Musculação'),
+(2, 'Brunão', 'brunao@gmail.com', '444557722', 'Rua dos Brunos', 1299874114, '2015-02-01', 'bruno123', 'Musculação'),
+(3, 'Toguro', 'toguro@gmail.com', '12345678', 'Rua do Toguro', 12345678, '2025-02-02', 'toguro123', 'Musculação'),
+(4, 'Gabriel', 'gab@gmail.com', '12345678', 'Rua do Gabriel', 12345678, '2025-02-02', 'gabriel123', 'Pilates'),
+(5, 'Rafael', 'rafa@gmail.com', '12345678', 'Rua do Rafael', 12345678, '2025-02-02', 'rafa123', 'Zumba'),
+(6, 'Joao', 'joaoaoao@gmail.com', '12345678', 'Rua do joaoo', 12345678, '2025-02-02', 'joao123', 'Crossfit'),
+(7, 'Mateus', 'mateus@gmail.com', '12345678', 'RUa amem', 12345678, '2025-02-02', '', 'Personal Trainer'),
+(8, 'Yagão', 'yagoinstrutor@gmail.com', '12345678', 'Rua das Aleluias', 12345678, '2025-02-02', 'yago123', 'Aeróbica');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `usuarios`
+-- Estrutura da tabela `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -115,85 +126,89 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Despejando dados para a tabela `usuarios`
+-- Extraindo dados da tabela `usuarios`
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `nome_usuario`, `email_usuario`, `senha_usuario`, `tipo_usuario`) VALUES
 (1, 'Kaique', 'kaique1245br@gmail.com', '$2y$10$mM5F3zd9E/dLqJ8BLuasVuVxkpZF4lb/9t30H3fkl99Io2qMlUaYy', 'aluno'),
-(2, 'Yago', 'yago@gmail.com', '$2y$10$IR7jXWNG7fk7jjfZimYP6eu5AOhduLUzWC0BrgIKnPzJJcgyQena2', 'aluno'),
+(2, 'Yago', 'yago@gmail.com', '$2y$10$IR7jXWNG7fk7jjfZimYP6eu5AOhduLUzWC0BrgIKnPzJJcgyQena2', 'instrutor'),
 (3, 'Mamute', 'mamute@gmail.com', '$2y$10$MM07HFpt/b51FQ/K8yUXPeOzZyjC6u0m5ce1rHR4aFrjJaeWVNeg6', 'aluno'),
-(4, '', 'marcos@gmail.com', '$2y$10$60o7eL.vc44HBrfFVBLxn.ZA7veRB6NUF3VClgXD/fjOiU4xKOKAK', 'instrutor');
+(4, '', 'marcos@gmail.com', '$2y$10$60o7eL.vc44HBrfFVBLxn.ZA7veRB6NUF3VClgXD/fjOiU4xKOKAK', 'instrutor'),
+(5, 'Roberto', 'beto@gmail.com', '$2y$10$FFiGlskjcYbzPNOvdjqV8.lAzFPH2q7JCU4LvjaEQs7FD5Sx4YQKC', 'aluno'),
+(6, 'Raquel', 'kel@gmail.com', '$2y$10$/upZJ/.Yjb0sMSJcZlxzau8l7bS4aUjPPfEH0kFpo6nY/hAG1Wb56', 'aluno'),
+(7, 'Tiago', 'tiago@gmail.com', '$2y$10$AqdS1rbhGGCcu09qRKLBMujS0rCzQ38Pi.eEN.CwZFqaXHpJqA8IS', 'aluno'),
+(8, 'Melissa', 'mel@gmail.com', '$2y$10$.UvNz9EjEXsbfg7ViJqjde/ePeo.REI1MCwKtZQGY5vZ9X0QDdrmq', 'aluno');
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices de tabela `aluno`
+-- Índices para tabela `aluno`
 --
 ALTER TABLE `aluno`
   ADD PRIMARY KEY (`aluno_cod`),
   ADD KEY `fk_aluno_aula` (`fk_aula_cod`);
 
 --
--- Índices de tabela `aula`
+-- Índices para tabela `aula`
 --
 ALTER TABLE `aula`
   ADD PRIMARY KEY (`aula_cod`),
   ADD KEY `fk_aula_aluno` (`fk_aluno_cod`);
 
 --
--- Índices de tabela `instrutor`
+-- Índices para tabela `instrutor`
 --
 ALTER TABLE `instrutor`
   ADD PRIMARY KEY (`instrutor_cod`);
 
 --
--- Índices de tabela `usuarios`
+-- Índices para tabela `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_usuario`);
 
 --
--- AUTO_INCREMENT para tabelas despejadas
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
 -- AUTO_INCREMENT de tabela `aluno`
 --
 ALTER TABLE `aluno`
-  MODIFY `aluno_cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `aluno_cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `aula`
 --
 ALTER TABLE `aula`
-  MODIFY `aula_cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `aula_cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de tabela `instrutor`
 --
 ALTER TABLE `instrutor`
-  MODIFY `instrutor_cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `instrutor_cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- Restrições para tabelas despejadas
+-- Restrições para despejos de tabelas
 --
 
 --
--- Restrições para tabelas `aluno`
+-- Limitadores para a tabela `aluno`
 --
 ALTER TABLE `aluno`
   ADD CONSTRAINT `fk_aluno_aula` FOREIGN KEY (`fk_aula_cod`) REFERENCES `aula` (`aula_cod`) ON DELETE SET NULL;
 
 --
--- Restrições para tabelas `aula`
+-- Limitadores para a tabela `aula`
 --
 ALTER TABLE `aula`
   ADD CONSTRAINT `fk_aula_aluno` FOREIGN KEY (`fk_aluno_cod`) REFERENCES `aluno` (`aluno_cod`) ON DELETE SET NULL;
