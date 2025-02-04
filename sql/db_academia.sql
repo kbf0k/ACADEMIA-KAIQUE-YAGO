@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE DATABASE db_academia;
-USE db_academia
+USE db_academia;
 
 CREATE TABLE `aluno` (
   `aluno_cod` int(11) NOT NULL,
