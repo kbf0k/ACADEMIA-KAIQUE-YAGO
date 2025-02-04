@@ -89,7 +89,6 @@ document.getElementById('formAula').addEventListener('submit', function(event) {
 
 
 // Função para preencher os selects com os dados do banco
-// Função para preencher os selects com os dados do banco
 function preencherSelects() {
     fetch('get_options.php') // Requisição para o PHP
         .then(response => response.json()) // Converte a resposta para JSON
