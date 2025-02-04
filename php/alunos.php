@@ -1,31 +1,21 @@
 <?php
+// Incluir arquivo de configuração
 include('config.php');
-session_start();
+session_start();  // Iniciar a sessão
 
-// Consulta com filtro de pesquisa
-$sql = "SELECT a.fk_aluno_cod, al.aluno_nome, a.aula_tipo 
-        FROM aula a
-        JOIN aluno al ON a.fk_aluno_cod = al.aluno_cod";
-
+$sql = "SELECT aluno_cod, aluno_nome, aluno_cpf, aluno_telefone FROM aluno";
 $result = $conexao->query($sql);
-
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alunos da Hyperforce</title>
+    <title>Lista de Alunos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
     <link rel="stylesheet" href="../css/alunos.css">
-    <script src="../js/alunos.js" defer></script>
 </head>
-
-<body>
+<header>
     <nav class="navbar">
         <a href="home.php"><img src="../img/logo3.png" alt="" class="logo"></a>
         <ul>
@@ -46,107 +36,46 @@ $result = $conexao->query($sql);
         <?php endif; ?>
     </nav>
 
-    <div class="container mt-4">
-        <h2 class="text-center">Alunos</h2>
+</header>
+<body>
+    <div class="container">
+        <h2>Lista de Alunos</h2>
+        <?php
+        if ($result) {
+            if ($result->num_rows > 0) {
+                echo "<table class='table table-bordered'>
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>CPF</th>
+                                <th>Telefone</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>";
+                while($row = $result->fetch_assoc()) {
+                    echo "<tr>
+                            <td>" . $row["aluno_nome"] . "</td>
+                            <td>" . $row["aluno_cpf"] . "</td>
+                            <td>" . $row["aluno_telefone"] . "</td>
+                            <td>
+                                <a href='editar_aluno.php?id=" . $row["aluno_cod"] . "' class='btn btn-warning btn-sm'>Editar</a>
+                                <a href='excluir_aluno.php?id=" . $row["aluno_cod"] . "' class='btn btn-danger btn-sm' onclick='return confirm(\"Tem certeza que deseja excluir?\")'>Excluir</a>
+                            </td>
+                          </tr>";
+                }
+                echo "</tbody></table>";
+            } else {
+                echo "<p>Nenhum aluno encontrado.</p>";
+            }
+        } else {
+            echo "<p>Erro ao executar a consulta: " . $conexao->error . "</p>";
+        }
 
-        <!-- Botão para abrir o modal de adicionar aluno -->
-        <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#modalAdicionarAluno">Adicionar Aluno</button>
-
-        <!-- Lista de Alunos -->
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Curso</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php while ($row = $result->fetch_assoc()) { ?>
-                    <tr>
-                        <td><?= htmlspecialchars($row['aluno_nome']) ?></td>
-                        <td><?= htmlspecialchars($row['aula_tipo']) ?></td>
-                        <td>
-                            <button class="btn btn-primary btn-sm btn-editar"
-                                data-id="<?= $row['fk_aluno_cod'] ?>"
-                                data-nome="<?= htmlspecialchars($row['aluno_nome']) ?>"
-                                data-curso="<?= htmlspecialchars($row['aula_tipo']) ?>"
-                                data-bs-toggle="modal" data-bs-target="#modalEditarAluno">Editar</button>
-
-                            <a href="excluir_aluno.php?id=<?= $row['fk_aluno_cod'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
-                        </td>
-                    </tr>
-                <?php } ?>
-            </tbody>
-        </table>
+        // Fechar a conexão com o banco
+        $conexao->close();
+        ?>
     </div>
-
-    <!-- Modal Adicionar Aluno -->
-    <div class="modal fade" id="modalAdicionarAluno" tabindex="-1" aria-labelledby="modalAdicionarAlunoLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalAdicionarAlunoLabel">Adicionar Aluno</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="adicionar_aluno.php" method="POST">
-                        <div class="mb-3">
-                            <label for="alunoNome" class="form-label">Nome</label>
-                            <input type="text" class="form-control" name="alunoNome" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="alunoCurso" class="form-label">Curso</label>
-                            <input type="text" class="form-control" name="alunoCurso" required>
-                        </div>
-                        <button type="submit" class="btn btn-success">Adicionar</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal Editar Aluno -->
-    <div class="modal fade" id="modalEditarAluno" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Editar Aluno</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="editar_aluno.php" method="POST">
-                        <input type="hidden" id="alunoId" name="alunoId">
-                        <div class="mb-3">
-                            <label for="alunoNome" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="alunoNomeInput" name="alunoNome" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="alunoCurso" class="form-label">Curso</label>
-                            <input type="text" class="form-control" id="alunoCursoInput" name="alunoCurso" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Script para preenchimento dos modais -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const editarButtons = document.querySelectorAll(".btn-editar");
-
-            editarButtons.forEach(button => {
-                button.addEventListener("click", function() {
-                    document.getElementById("alunoId").value = this.dataset.id;
-                    document.getElementById("alunoNomeInput").value = this.dataset.nome;
-                    document.getElementById("alunoCursoInput").value = this.dataset.curso;
-                });
-            });
-        });
-    </script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

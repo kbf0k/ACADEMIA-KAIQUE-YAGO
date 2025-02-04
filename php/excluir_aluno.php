@@ -1,19 +1,31 @@
 <?php
+// Incluir arquivo de configuração
 include('config.php');
+session_start();
 
-// Verifica se o ID foi passado via GET
+// Verificar se o ID do aluno foi passado via URL
 if (isset($_GET['id'])) {
-    $instrutorId = $conexao->real_escape_string($_GET['id']);
+    $aluno_id = $_GET['id'];
 
-    // Deleta o instrutor do banco de dados
-    $sql = "DELETE FROM instrutor WHERE instrutor_cod = $instrutorId";
-    
-    if ($conexao->query($sql) === TRUE) {
-        // Redireciona para a página instrutor.php após a exclusão
-        header('Location: instrutor.php');
-        exit;
+    // Excluir as referências na tabela 'aula'
+    $sql_delete_aula = "DELETE FROM aula WHERE fk_aluno_cod = $aluno_id";
+    if ($conexao->query($sql_delete_aula) === TRUE) {
+        // Excluir o aluno
+        $sql_delete_aluno = "DELETE FROM aluno WHERE aluno_cod = $aluno_id";
+        if ($conexao->query($sql_delete_aluno) === TRUE) {
+            echo "Aluno excluído com sucesso!";
+            header("Location: alunos.php"); // Redirecionar de volta para a lista
+            exit;
+        } else {
+            echo "Erro ao excluir o aluno: " . $conexao->error;
+        }
     } else {
-        echo "Erro: " . $sql . "<br>" . $conexao->error;
+        echo "Erro ao excluir as referências na tabela aula: " . $conexao->error;
     }
+} else {
+    echo "ID não especificado!";
 }
+
+// Fechar a conexão
+$conexao->close();
 ?>

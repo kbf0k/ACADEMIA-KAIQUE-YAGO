@@ -76,12 +76,10 @@ $result = $conexao->query($sql);
     </div>
 
     <!-- Modal Adicionar Instrutor -->
-    <!-- Modal Adicionar Instrutor -->
     <div class="modal fade" id="modalAdicionarInstrutor" tabindex="-1" aria-labelledby="modalAdicionarInstrutorLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalAdicionarInstrutorLabel">Adicionar Instrutor</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
                 </div>
                 <div class="modal-body">
@@ -92,11 +90,30 @@ $result = $conexao->query($sql);
                         </div>
                         <div class="mb-3">
                             <label for="instrutorEspecialidade" class="form-label">Especialidade</label>
-                            <input type="text" class="form-control" name="instrutorEspecialidade" required>
+                            <select name="instrutorEspecialidade" id="especialidade">
+                                <option value="Musculação">Musculação</option>
+                                <option value="Crossfit">Crossfit</option>
+                                <option value="Pilates">Pilates</option>
+                                <option value="Yoga">Yoga</option>
+                                <option value="Zumba">Zumba</option>
+                                <option value="Aeróbica">Aeróbica</option>
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label for="instrutorEmail" class="form-label">E-mail</label>
                             <input type="email" class="form-control" name="instrutorEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="instrutorCpf" class="form-label">Cpf</label>
+                            <input type="text" class="form-control" name="instrutorCpf" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="instrutorTelefone" class="form-label">Telefone</label>
+                            <input type="text" class="form-control" name="instrutorTelefone" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="instrutorDataNascimento" class="form-label">Data de Nascimento</label>
+                            <input type="date" class="form-control" name="instrutorDataNascimento" required>
                         </div>
                         <div class="mb-3">
                             <label for="instrutorSenha" class="form-label">Senha</label>
@@ -126,7 +143,14 @@ $result = $conexao->query($sql);
                         </div>
                         <div class="mb-3">
                             <label for="instrutorEspecialidade" class="form-label">Especialidade</label>
-                            <input type="text" class="form-control" id="instrutorEspecialidadeInput" name="instrutorEspecialidade" required>
+                            <select name="instrutorEspecialidade" id="especialidade">
+                                <option value="Musculação">Musculação</option>
+                                <option value="Crossfit">Crossfit</option>
+                                <option value="Pilates">Pilates</option>
+                                <option value="Yoga">Yoga</option>
+                                <option value="Zumba">Zumba</option>
+                                <option value="Aeróbica">Aeróbica</option>
+                            </select>
                         </div>
                         <button type="submit" class="btn btn-primary">Salvar Alterações</button>
                     </form>
@@ -160,6 +184,11 @@ $result = $conexao->query($sql);
                     document.getElementById("instrutorId").value = this.dataset.id;
                     document.getElementById("instrutorNomeInput").value = this.dataset.nome;
                     document.getElementById("instrutorEspecialidadeInput").value = this.dataset.especialidade;
+                    document.getElementById("instrutorEmailInput").value = this.dataset.email;
+                    document.getElementById("instrutorCpfInput").value = this.dataset.cpf;
+                    document.getElementById("instrutorTelefoneInput").value = this.dataset.telefone;
+                    document.getElementById("instrutorDataNascimentoInput").value = this.dataset.dataNascimento;
+                    document.getElementById("instrutorSenhaInput").value = this.dataset.senha;
                 });
             });
         });
@@ -278,4 +307,3 @@ $result = $conexao->query($sql);
         display: flex;
         justify-content: flex-end;
     }
-</style>
