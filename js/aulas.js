@@ -141,6 +141,7 @@ document.querySelectorAll('.inscrever-btn').forEach(button => {
         
         // Pergunta se o aluno quer se inscrever
         Swal.fire({
+            icon: "question",
             title: 'Quer se inscrever nesta aula?',
             showCancelButton: true,
             confirmButtonText: 'Sim',

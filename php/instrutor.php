@@ -20,30 +20,45 @@ $result = $conexao->query($sql);
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
     <script src="../js/instrutor.js" defer></script>
 </head>
-<nav class="navbar">
-    <a href="home.php"><img src="../img/logo3.png" alt="" class="logo"></a>
-    <ul>
-        <li><a href="home.php">Início</a></li>
-        <li><a href="alunos.php">Alunos</a></li>
-        <li><a href="instrutor.php">Instrutores</a></li>
-        <li><a href="aulas.php">Aulas</a></li>
-    </ul>
+<header>
+    <nav class="navbar">
+        <a href="home.php"><img src="../img/logo_2.png" alt="" class="logo"></a>
+        <ul>
+            <li><a href="home.php">Início</a></li>
 
-    <?php if (isset($_SESSION['nome_sessao'])): ?>
-        <div class="usuario">
-            <a href="#" id="nome_usuario">Olá, <?= htmlspecialchars($_SESSION['nome_sessao']) ?></a>
-            <img id="logout" src="../img/logout.png" alt="">
-        </div>
-    <?php else: ?>
-        <a href="login.php" id="entrar">Entrar</a>
-        <div class="menu-icon" onclick="toggleMenu()">☰</div>
-    <?php endif; ?>
-</nav>
+            <?php if (!isset($_SESSION['tipo_sessao'])): ?>
+                <li><a href="aulas.php">Aulas</a></li>
+            <?php else: ?>
+                <?php if ($_SESSION['tipo_sessao'] === 'aluno'): ?>
+                    <li><a href="aulas.php">Aulas</a></li>
+                    <li><a href="alunos.php">Alunos</a></li>
+                <?php elseif ($_SESSION['tipo_sessao'] === 'instrutor'): ?>
+                    <li><a href="aulas.php">Aulas</a></li>
+                    <li><a href="alunos.php">Alunos</a></li>
+                    <li><a href="instrutor.php">Instrutores</a></li>
+                <?php endif; ?>
+            <?php endif; ?>
+        </ul>
+
+        <?php if (isset($_SESSION['nome_sessao'])): ?>
+            <div class="usuario">
+                <a href="#" id="nome_usuario">Olá, <?= htmlspecialchars($_SESSION['nome_sessao']) ?></a>
+                <img id="logout" src="../img/logout.png" alt="Sair">
+            </div>
+        <?php else: ?>
+            <a href="login.php" id="entrar">Entrar</a>
+        <?php endif; ?>
+
+        <div class="menu-icon">☰</div>
+    </nav>
+</header>
+
+
 
 <body>
 
     <div class="container mt-4">
-        <h2 class="text-center">Gerenciamento de Instrutores</h2>
+        <h2 class="text-center">GERENCIAMENTO DE INSTRUTORES</h2>
 
         <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#modalAdicionarInstrutor">Adicionar Instrutor</button>
 
@@ -70,7 +85,8 @@ $result = $conexao->query($sql);
                             <a href="excluir_instrutor.php?id=<?= $row['instrutor_cod'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</a>
                         </td>
                     </tr>
-                <?php } ?>
+                <?php
+                } ?>
             </tbody>
         </table>
     </div>
@@ -193,6 +209,18 @@ $result = $conexao->query($sql);
             });
         });
     </script>
+    <script>
+        const menu = document.querySelector('.navbar ul');
+        const menuIcon = document.querySelector('.menu-icon');
+
+        menuIcon.addEventListener('click', () => {
+            if (menu.classList.contains('show')) {
+                menu.classList.remove('show');
+            } else {
+                menu.classList.add('show');
+            }
+        });
+    </script>
 
 </body>
 
@@ -200,11 +228,6 @@ $result = $conexao->query($sql);
 
 <style>
     /* Estilo geral */
-    body {
-        font-family: 'Arial', sans-serif;
-        background-color: #f4f4f9;
-        color: #333;
-    }
 
     /* Cabeçalho */
     h2 {

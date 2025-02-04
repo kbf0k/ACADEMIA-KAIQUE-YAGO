@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 01/02/2025 às 05:29
+-- Host: 127.0.0.1:3307
+-- Tempo de geração: 04/02/2025 às 02:38
 -- Versão do servidor: 10.4.32-MariaDB
--- Versão do PHP: 8.2.12
+-- Versão do PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,8 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE DATABASE db_academia;
-USE db_academia;
-
+USE db_academia
 
 CREATE TABLE `aluno` (
   `aluno_cod` int(11) NOT NULL,
@@ -39,17 +38,18 @@ CREATE TABLE `aluno` (
   `aluno_endereco` varchar(255) DEFAULT NULL,
   `aluno_telefone` varchar(20) DEFAULT NULL,
   `aluno_nasc` date DEFAULT NULL,
-  `aluno_senha` varchar(255) NOT NULL
+  `aluno_senha` varchar(255) NOT NULL,
+  `fk_aula_cod` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `aluno`
 --
 
-INSERT INTO `aluno` (`aluno_cod`, `aluno_nome`, `aluno_email`, `aluno_cpf`, `aluno_endereco`, `aluno_telefone`, `aluno_nasc`, `aluno_senha`) VALUES
-(1, 'Kaique', 'kaique1245br@gmail.com', '123456789', 'Rua do Kaique', '123456789', '2025-02-11', '$2y$10$mM5F3zd9E/dLqJ8BLuasVuVxkpZF4lb/9t30H3fkl99Io2qMlUaYy'),
-(2, 'Yago', 'yago@gmail.com', '123456789', 'Rua do yago', '123456789', '2025-02-11', '$2y$10$IR7jXWNG7fk7jjfZimYP6eu5AOhduLUzWC0BrgIKnPzJJcgyQena2'),
-(3, 'Mamute', 'mamute@gmail.com', '123456789', 'Rua do mamute', '123456789', '2025-02-18', '$2y$10$MM07HFpt/b51FQ/K8yUXPeOzZyjC6u0m5ce1rHR4aFrjJaeWVNeg6');
+INSERT INTO `aluno` (`aluno_cod`, `aluno_nome`, `aluno_email`, `aluno_cpf`, `aluno_endereco`, `aluno_telefone`, `aluno_nasc`, `aluno_senha`, `fk_aula_cod`) VALUES
+(1, 'Kaique', 'kaique1245br@gmail.com', '123456789', 'Rua do Kaique', '123456789', '2025-02-11', '$2y$10$mM5F3zd9E/dLqJ8BLuasVuVxkpZF4lb/9t30H3fkl99Io2qMlUaYy', NULL),
+(2, 'Yago', 'yago@gmail.com', '123456789', 'Rua do yago', '123456789', '2025-02-11', '$2y$10$IR7jXWNG7fk7jjfZimYP6eu5AOhduLUzWC0BrgIKnPzJJcgyQena2', NULL),
+(3, 'Mamute', 'mamute@gmail.com', '123456789', 'Rua do mamute', '123456789', '2025-02-18', '$2y$10$MM07HFpt/b51FQ/K8yUXPeOzZyjC6u0m5ce1rHR4aFrjJaeWVNeg6', NULL);
 
 -- --------------------------------------------------------
 
@@ -70,9 +70,9 @@ CREATE TABLE `aula` (
 --
 
 INSERT INTO `aula` (`aula_cod`, `aula_tipo`, `aula_data`, `fk_instrutor_cod`, `fk_aluno_cod`) VALUES
-(1, 'Crossfit', '2025-02-01 05:27:04', 1, 1),
-(2, 'Zumba', '2025-02-01 05:27:31', 1, 2),
-(3, 'Personal Trainer', '2025-02-01 05:27:44', 1, 1);
+(8, 'Zumba', '2025-02-26 00:30:00', 2, 2),
+(13, 'Yoga', '2025-02-11 00:00:00', 1, 2),
+(15, 'Aeróbica', '2025-02-27 00:00:00', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -97,7 +97,8 @@ CREATE TABLE `instrutor` (
 --
 
 INSERT INTO `instrutor` (`instrutor_cod`, `instrutor_nome`, `instrutor_email`, `instrutor_cpf`, `instrutor_endereco`, `instrutor_telefone`, `instrutor_nasc`, `instrutor_senha`, `instrutor_especialidade`) VALUES
-(1, 'Marcos', '', '', '', 0, '0000-00-00', '', 'Musculação');
+(1, 'Marcos', '', '', '', 0, '0000-00-00', '', 'Musculação'),
+(2, 'Brunão', 'brunao@gmail.com', '444557722', 'Rua dos Brunos', 1299874114, '2015-02-01', 'bruno123', 'Musculação');
 
 -- --------------------------------------------------------
 
@@ -131,15 +132,15 @@ INSERT INTO `usuarios` (`id_usuario`, `nome_usuario`, `email_usuario`, `senha_us
 -- Índices de tabela `aluno`
 --
 ALTER TABLE `aluno`
-  ADD PRIMARY KEY (`aluno_cod`);
+  ADD PRIMARY KEY (`aluno_cod`),
+  ADD KEY `fk_aluno_aula` (`fk_aula_cod`);
 
 --
 -- Índices de tabela `aula`
 --
 ALTER TABLE `aula`
   ADD PRIMARY KEY (`aula_cod`),
-  ADD KEY `fk_instrutor_cod` (`fk_instrutor_cod`),
-  ADD KEY `fk_aluno_cod` (`fk_aluno_cod`);
+  ADD KEY `fk_aula_aluno` (`fk_aluno_cod`);
 
 --
 -- Índices de tabela `instrutor`
@@ -167,13 +168,13 @@ ALTER TABLE `aluno`
 -- AUTO_INCREMENT de tabela `aula`
 --
 ALTER TABLE `aula`
-  MODIFY `aula_cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `aula_cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de tabela `instrutor`
 --
 ALTER TABLE `instrutor`
-  MODIFY `instrutor_cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `instrutor_cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`
@@ -186,11 +187,16 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- Restrições para tabelas `aluno`
+--
+ALTER TABLE `aluno`
+  ADD CONSTRAINT `fk_aluno_aula` FOREIGN KEY (`fk_aula_cod`) REFERENCES `aula` (`aula_cod`) ON DELETE SET NULL;
+
+--
 -- Restrições para tabelas `aula`
 --
 ALTER TABLE `aula`
-  ADD CONSTRAINT `fk_aluno_cod` FOREIGN KEY (`fk_aluno_cod`) REFERENCES `aluno` (`aluno_cod`),
-  ADD CONSTRAINT `fk_instrutor_cod` FOREIGN KEY (`fk_instrutor_cod`) REFERENCES `instrutor` (`instrutor_cod`);
+  ADD CONSTRAINT `fk_aula_aluno` FOREIGN KEY (`fk_aluno_cod`) REFERENCES `aluno` (`aluno_cod`) ON DELETE SET NULL;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

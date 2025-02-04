@@ -12,7 +12,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(180deg,black,black,black,black,rgba(0, 0, 0, 0));
+    background: linear-gradient(180deg, black, black, black, black, rgba(0, 0, 0, 0));
     position: absolute;
     z-index: 1;
     color: #fff;
@@ -87,122 +87,246 @@
     margin-right: 20px;
 }
 
+
+/* Tabela de Instrutores */
+.table {
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.table th,
+.table td {
+    text-align: center;
+    padding: 15px;
+}
+
+.table-striped tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+/* Botões */
+.btn {
+    transition: background-color 0.3s ease;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+/* Modal */
+.modal-content {
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    background-color: #007bff;
+    color: white;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.modal-header .btn-close {
+    background-color: #fff;
+    border: none;
+    color: #007bff;
+}
+
+.modal-header .btn-close:hover {
+    color: #0056b3;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-body .form-label {
+    font-weight: bold;
+}
+
+.modal-body .form-control {
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
 @media (max-width: 768px) {
-    .navbar ul {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        background: #000;
-        width: 100%;
-        text-align: center;
-        padding: 10px 0;
-    }
+
     .navbar .logo {
-        width: 155px;            
+        max-width: 250px;
+        margin-left: auto;
+        margin-top: 10px;
     }
-    .navbar ul.show {
+
+    .navbar #nome_usuario {
+        padding: 2px 8px;
+    }
+
+
+    .navbar #entrar {
+        margin: 0;
+    }
+
+    #home_texto {
         display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: auto;
     }
-    .menu-icon {
-        display: block;
+
+    #home_texto h1 {
+        font-size: 40px;
+    }
+
+    #home_texto span {
+        font-size: 50px;
+    }
+
+    #home_texto p {
+        font-size: 18px;
+    }
+
+    #sobre {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #sobre_text {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: auto;
+        height: auto;
+        margin-right: auto;
+        margin-top: 40px;
+    }
+
+    #sobre_text h1 {
+        text-align: center;
+    }
+
+    #sobre_text p {
+        padding: 30px;
+        margin: 0;
+    }
+
+    #sobre_text .saiba_mais {
+        margin-bottom: 40px;
+    }
+
+    .img-sobre {
+        width: 250px;
+    }
+
+    #servicos_container {
+        grid-template-columns: none;
+    }
+
+    .footer p {
+        text-align: center;
     }
 }
 
-
-    /* Tabela de Instrutores */
-    .table {
-        border-radius: 8px;
-        border: 1px solid #ddd;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-    
-    .table th, .table td {
+@media (max-width: 768px) {
+    .navbar ul {
+        visibility: hidden;
+        opacity: 0;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        background: linear-gradient(180deg, black, black, black, black, rgba(0, 0, 0, 0));
+        width: 100%;
         text-align: center;
-        padding: 15px;
+        padding: 10px 0;
+        transition: visibility 0s 0.5s, opacity 0.5s ease-in-out;
     }
-    
-    .table-striped tbody tr:nth-child(odd) {
-        background-color: #f9f9f9;
+
+    .navbar .logo {
+        width: 155px;
     }
-    
-    /* Botões */
-    .btn {
-        transition: background-color 0.3s ease;
+
+    .navbar ul.show {
+        visibility: visible;
+        opacity: 1;
+        transition: visibility 0s 0s, opacity 0.5s ease-in-out;
     }
-    
-    .btn-success {
-        background-color: #28a745;
-        border-color: #28a745;
+
+    .navbar ul.hide {
+        animation: slideOut 0.5s ease-in-out forwards;
     }
-    
-    .btn-success:hover {
-        background-color: #218838;
-        border-color: #1e7e34;
+
+    .menu-icon {
+        display: block;
+        margin-right: 20px;
     }
-    
-    .btn-primary {
-        background-color: #007bff;
-        border-color: #007bff;
+
+    .navbar ul li {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        list-style: none;
     }
-    
-    .btn-primary:hover {
-        background-color: #0056b3;
-        border-color: #004085;
+
+    #logout{
+        margin-right: auto;
     }
-    
-    .btn-danger {
-        background-color: #dc3545;
-        border-color: #dc3545;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
     }
-    
-    .btn-danger:hover {
-        background-color: #c82333;
-        border-color: #bd2130;
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
     }
-    
-    /* Modal */
-    .modal-content {
-        border-radius: 8px;
-        border: 1px solid #ddd;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes slideOut {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
     }
-    
-    .modal-header {
-        background-color: #007bff;
-        color: white;
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
+
+    100% {
+        transform: translateY(-20px);
+        opacity: 0;
     }
-    
-    .modal-header .btn-close {
-        background-color: #fff;
-        border: none;
-        color: #007bff;
-    }
-    
-    .modal-header .btn-close:hover {
-        color: #0056b3;
-    }
-    
-    .modal-body {
-        padding: 20px;
-    }
-    
-    .modal-body .form-label {
-        font-weight: bold;
-    }
-    
-    .modal-body .form-control {
-        border-radius: 8px;
-        border: 1px solid #ccc;
-        padding: 10px;
-        margin-bottom: 15px;
-    }
-    
-    .modal-footer {
-        display: flex;
-        justify-content: flex-end;
-    }
-    
+}

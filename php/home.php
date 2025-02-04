@@ -20,23 +20,35 @@ include('config.php');
         <a href="home.php"><img src="../img/logo_2.png" alt="" class="logo"></a>
         <ul>
             <li><a href="home.php">Início</a></li>
-            <li><a href="alunos.php">Alunos</a></li>
-            <li><a href="instrutor.php">Instrutores</a></li>
-            <li><a href="aulas.php">Aulas</a></li>
+
+            <?php if (!isset($_SESSION['tipo_sessao'])): ?>
+                <li><a href="aulas.php">Aulas</a></li>
+            <?php else: ?>
+                <?php if ($_SESSION['tipo_sessao'] === 'aluno'): ?>
+                    <li><a href="aulas.php">Aulas</a></li>
+                    <li><a href="alunos.php">Alunos</a></li>
+                <?php elseif ($_SESSION['tipo_sessao'] === 'instrutor'): ?>
+                    <li><a href="aulas.php">Aulas</a></li>
+                    <li><a href="alunos.php">Alunos</a></li>
+                    <li><a href="instrutor.php">Instrutores</a></li>
+                <?php endif; ?>
+            <?php endif; ?>
         </ul>
 
         <?php if (isset($_SESSION['nome_sessao'])): ?>
             <div class="usuario">
                 <a href="#" id="nome_usuario">Olá, <?= htmlspecialchars($_SESSION['nome_sessao']) ?></a>
-                <img id="logout" src="../img/logout.png" alt="">
+                <img id="logout" src="../img/logout.png" alt="Sair">
             </div>
         <?php else: ?>
             <a href="login.php" id="entrar">Entrar</a>
-            <div class="menu-icon">☰</div>
         <?php endif; ?>
-    </nav>
 
+        <div class="menu-icon">☰</div>
+    </nav>
 </header>
+
+
 
 <body>
     <main>
