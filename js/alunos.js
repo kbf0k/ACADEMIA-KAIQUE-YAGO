@@ -21,3 +21,19 @@ document.getElementById('logout').addEventListener('click', () => {
         }
     });
 });
+function confirmDeletion(alunoId) {
+    Swal.fire({
+        title: "Tem certeza?",
+        text: "Você não poderá reverter isso!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Sim, quero excluir!"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Redireciona para a página de exclusão com o ID do aluno
+            window.location.href = "excluir_aluno.php?id=" + alunoId;
+        }
+    });
+}

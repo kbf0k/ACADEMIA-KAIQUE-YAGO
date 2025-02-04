@@ -205,17 +205,6 @@
     font-size: 16px;
 }
 
-/* img { 
-width: 100px;
-height: 100px;
-margin-right: 10px;
-border-radius: 50%;
-object-fit: cover;
-background-color: white;
-} */
-
-/* NAO SEI OQ É IMG */
-
 .nav-item {
 margin-right: 40px;
 }
@@ -231,19 +220,6 @@ main {
 
 }
 
-/* main{
-    height: 100vh;
-}
-
-.container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
-} */
-
-/* Cabeçalho */
 h2 {
     color: #007bff;
     margin-bottom: 20px;
@@ -253,14 +229,23 @@ h2 {
 /* Tabela de Alunos */
 .table {
     border-radius: 8px;
-    border: 1px solid #ddd;
+    border: 10px solid #ddd;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.table th {
+    font-weight: bold;
+    background-color: #ddd;
+}
+
+.table td {
+    border-bottom: 1px solid #ddd;
 }
 
 .table th,
 .table td {
     text-align: center;
-    padding: 15px;
+    padding: 20px;
 }
 
 .table-striped tbody tr:nth-child(odd) {
@@ -282,24 +267,39 @@ h2 {
     border-color: #1e7e34;
 }
 
-.btn-primary {
+.btn-warning {
     background-color: #007bff;
     border-color: #007bff;
+    padding: 5px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
 }
 
 .btn-primary:hover {
     background-color: #0056b3;
-    border-color: #004085;
+    border-color: #004086;
+    padding: 5px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
 }
 
 .btn-danger {
     background-color: #dc3545;
     border-color: #dc3545;
+    padding: 5px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
 }
 
 .btn-danger:hover {
     background-color: #c82333;
-    border-color: #bd2130;
+    padding: 5px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
 }
 
 /* Modal */
